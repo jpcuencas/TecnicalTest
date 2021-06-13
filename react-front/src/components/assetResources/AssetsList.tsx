@@ -68,7 +68,7 @@ const AssetsList = () => {
          </ul>
        </nav>
        {
-       (pagination.total ===1)?
+       (pagination.total)?
        <p>Total: {pagination.total}</p>:<p></p>
         }
        <table className="table">

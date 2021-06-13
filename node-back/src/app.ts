@@ -3,8 +3,8 @@ import express from 'express';
 import cookieSession from 'cookie-session';
 import morgan from 'morgan';
 import cors from 'cors';
-//import cookieParser from 'cookie-parser';
-import { graphqlHTTP } from "express-graphql";
+import cookieParser from 'cookie-parser';
+//import { graphqlHTTP } from "express-graphql";
 
 import config from './config/config';
 import assetsRoutes from './routes/assets.routes';
@@ -20,12 +20,14 @@ app.use(morgan('dev'));
 // cruzar servers
 app.use(cors());
 // set session
+/**/
 app.use(cookieSession({
     name: 'session',
     keys: ['token', 'siteId']
   }))
+/**/
 // parse cookie
-//app.use(cookieParser());
+app.use(cookieParser());
 // parse json
 app.use(express.json());
 // enviar datos codificacion en uri

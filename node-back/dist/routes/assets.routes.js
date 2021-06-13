@@ -27,6 +27,8 @@ const router = express_1.Router();
 router.get('/autorize', oauthCtrl.getCode);
 router.get('/integrations', oauthCtrl.getRedirecct);
 router.get('/refresh', oauthCtrl.getRefresh);
+router.get('/assets', assetsCtrl.getAssets);
+router.get('/assets/:id', assetsCtrl.getAsset);
 router.get('/assetsGrap', assetsCtrl.getAssetsGraphql);
 router.get('/assetsGrapPag', assetsCtrl.getAssetsGraphqlPag);
 router.get('/softwareGrap/:key', softwareCtrl.getSoftwareGraphql);

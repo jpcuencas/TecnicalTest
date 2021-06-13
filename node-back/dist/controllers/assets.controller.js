@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAssetsGraphql = exports.getAssetsGraphqlPag = void 0;
+exports.getAssets = exports.getAsset = exports.getAssetsGraphql = exports.getAssetsGraphqlPag = void 0;
 const assets_service_1 = __importDefault(require("../services/assets.service"));
 const oauth_service_1 = __importDefault(require("../services/oauth.service"));
 const sites_service_1 = __importDefault(require("../services/sites.service"));
@@ -46,4 +46,16 @@ const getAssetsGraphql = (req, res) => __awaiter(void 0, void 0, void 0, functio
     console.log(result);
 });
 exports.getAssetsGraphql = getAssetsGraphql;
+const getAsset = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let result = yield assets_service_1.default.getAsset(req.params.id);
+    console.log('----- results ---------');
+    console.log(result);
+});
+exports.getAsset = getAsset;
+const getAssets = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let result = yield assets_service_1.default.getAssets();
+    console.log('----- results ---------');
+    console.log(result);
+});
+exports.getAssets = getAssets;
 //# sourceMappingURL=assets.controller.js.map

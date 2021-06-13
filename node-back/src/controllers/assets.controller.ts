@@ -27,19 +27,34 @@ export const getAssetsGraphqlPag: RequestHandler = async (req: any, res: any) =>
 export const getAssetsGraphql: RequestHandler = async (req: any, res: any) => {
     console.log(oauthService.getTokens())
     console.log(sitesService.getId())
-    let result = await assetsService.getGraphqlAssets(oauthService.getTokens().token, sitesService.getId());
-    console.log('----- results ---------')
-    console.log(result)
+    try {
+        let result = await assetsService.getGraphqlAssets(oauthService.getTokens().token, sitesService.getId());
+        console.log('----- results ---------')
+        console.log(result)
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
 }
 
 export const getAsset : RequestHandler = async (req: any, res: any) => {
+    try {
     let result = await assetsService.getAsset(req.params.id);
     console.log('----- results ---------')
     console.log(result)
+    res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
 }
 
 export const getAssets : RequestHandler = async (req: any, res: any) => {
-    let result = await assetsService.getAssets();
-    console.log('----- results ---------')
-    console.log(result)
+    try {
+        let result = await assetsService.getAssets();
+        console.log('----- results ---------')
+        console.log(result)
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
 }

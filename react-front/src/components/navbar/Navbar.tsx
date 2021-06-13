@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import config from '../../config/config';
 
 
 const Navbar = () => {
     
+  const history = useHistory();
     const initialLoggin: Boolean =false;
     const [loggin, setLoggin] = useState<Boolean>(initialLoggin);
     const madeLoggin = () => {
@@ -12,6 +13,9 @@ const Navbar = () => {
         setInterval(()=>{ventana?.close()}, 10 * 1000)
         let logg = true;
         setLoggin(logg);
+        if(history.location.pathname != '/') {
+            history.push("/");
+        }
     }
     
     useEffect( () => {

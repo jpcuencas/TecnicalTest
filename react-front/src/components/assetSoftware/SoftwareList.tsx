@@ -4,8 +4,10 @@ import * as SoftwareService from '../../services/SoftwareService';
 import Pagination from '../../models/Pagination';
 import SoftwareItem from './SoftwareItem';
 import Software from '../../models/Software';
-
-const SoftwareList = (props:any) => {
+interface Props {
+    value:any
+}
+const SoftwareList = (props:any)=> { //({key}:Props) => {
     const initialElements: Software[] = [];
     const [softwares, setSoftwares] = useState<Software[]>(initialElements);
     /**/
@@ -19,7 +21,8 @@ const SoftwareList = (props:any) => {
     const loadPagination = async(pagination: any) => {
         try {
             console.log(pagination)
-            const data = await SoftwareService.loadSoftwareGrapPagination(props.match.params.id, pagination);
+            console.log(props)
+            const data = await SoftwareService.loadSoftwareGrapPagination(props?.value, pagination);
             console.log(data)
             
             let pag: Pagination ={...pagination}
@@ -47,12 +50,10 @@ const SoftwareList = (props:any) => {
         loadPagination(pag);
     }
 /**/
-    useEffect( () => {
-        console.log(props)
-        props.match.params.id;
-        if(!props.match.params.id){
-            props.history.push("/list");
-        }
+    useEffect( () => {        
+        //if(!props.match.params.id){
+        //    props.history.push("/list");
+       // }
         loadPagination(pagination);
     }, []);
    
@@ -97,11 +98,8 @@ const SoftwareList = (props:any) => {
     :
      <p>Has no elements</p>
     }
-    <hr/>
-        <Link className="nav-link" to="/list">Back</Link>
     </>
     );
-
 }
 
 export default SoftwareList;

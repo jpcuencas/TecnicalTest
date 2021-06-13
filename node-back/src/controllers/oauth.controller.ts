@@ -53,7 +53,8 @@ export const getRefresh = async (req: any, res: any) => {
             }).send("cookie being reinitialised");
         }
         /**/
-    req.session.token = resp?.data?.access_token;
+        req.session.token = resp?.data?.access_token;
+        res.end();
     } else {
         res.send("Need Loggin!"); 
     }

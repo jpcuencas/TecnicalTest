@@ -1,58 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as AssetsService from '../../services/AssetsService';
-import * as SoftwareService from '../../services/SoftwareService';
 import Asset from '../../models/Asset/Asset';
 import Software from '../../models/Software';
-import SoftwareItem from '../assetSoftware/SoftwareItem';
+import SoftwareList from '../assetSoftware/SoftwareList';
 
 
 const AssetDetails = (props:any) => {
     /**/
     const initialAsset: Asset = {
-        _id:'',
-        key:''
+        _id:`${props.match.params.id}`,
+        key:`${props.match.params.key}`,
     };
-    /**
-    let initialAsset = 
-    {
-      _id: '60a78bda0aa271a8743784d0',
-      key: 'NDEtQXNzZXQtOTc0YzVmMjctNzlmNi00NGQyLWJiNDktYjdjYjgxOWYxOTA0',
-      assetBasicInfo: { name: 'XLAN-41', type: 'Windows' },
-      assetCustom: { manufacturer: 'Dell Inc.', model: 'Latitude E6420' }
-    }
-    /**/
     const [asset, setAsset] = useState<Asset>(initialAsset);
-    const initialElements: Software[] = [];
-    const [softwares, setSoftwares] = useState<Software[]>(initialElements);
     /**/
-    
-    const loadTable = async(key: string) => {
-        try {
-            const data = await SoftwareService.loadSoftwareGrap(key);
-            console.log(data)
-            
-            setSoftwares(data?.data?.site?.softwares?.items);
-        } catch(error) {
-            console.error(error);
-        }
-    };
     
     const loadAssetDetails = async(id: string) => {
         try {
             const element = await AssetsService.loadAsset(id);
-            console.log(element)
             setAsset(element);
-           // await loadTable(element.key)
         } catch(error) {
             console.error(error);
         }
     };
-
+    const sleep = (ms:any) => {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
     useEffect( () => {
         console.log(props)
         loadAssetDetails(props.match.params.id);
-    }, []);
+    }, [asset]);
    
     if(asset) {
        return (
@@ -63,6 +40,10 @@ const AssetDetails = (props:any) => {
               <tr>
                 <th>ID</th>
                 <td>{asset?._id}</td>
+              </tr>
+              <tr>
+                <th>Key</th>
+                <td>{asset?.key}</td>
               </tr>
             </tbody>
            </table>
@@ -130,39 +111,11 @@ const AssetDetails = (props:any) => {
         </div>
         <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div className="card-body">
-          <>
-       {
-       (softwares?.length)?
-       <>
-       <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Version</th>
-            <th scope="col">Publisher</th>
-            <th scope="col">Operating System</th>
-            <th scope="col">Install Date</th>
-            <th scope="col">Last Changed</th>
-          </tr>
-        </thead>
-        <tbody>
-        {
-            softwares?.map((value, index) => {
-                return <SoftwareItem key={index} element={value} />
-              })
-        }
-        </tbody>
-      </table>
-      </>
-    :
-     <p>Has no elements</p>
-    }
-    </>
+            <SoftwareList value={asset?.key}/>
           </div>
-        </div>
       </div>
       </div>
-
+      </div>
       <hr/>
           <Link className="nav-link" to="/list">Back</Link>
       </>
@@ -170,7 +123,6 @@ const AssetDetails = (props:any) => {
     } else {
         return <p>Has no element</p>;
     }
-    //    <SoftwareList key={asset?.key}/>
 }
 
 export default AssetDetails;
