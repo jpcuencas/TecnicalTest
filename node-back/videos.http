@@ -1,0 +1,7 @@
+// request with rest client vscode extension
+@urlBase = http://localhost:8081
+### get elements
+GET {{urlBase}}/assets
+
+### get element
+GET {{urlBase}}/assets/60a78b840aa271a87434a67c

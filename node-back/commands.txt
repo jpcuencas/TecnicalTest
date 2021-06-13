@@ -1,0 +1,11 @@
+// install tsc and latter execute
+npx tsc --init
+
+//config typescript
+npx tsconfig.json
+
+// graphql configurator
+npx graphql-codegen init
+
+// configure eslint
+./node_modules/.bin/eslint --init

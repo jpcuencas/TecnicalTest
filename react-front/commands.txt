@@ -1,0 +1,5 @@
+// install tsc and later execute
+npx tsc --init
+
+// configure eslint
+./node_modules/.bin/eslint --init
