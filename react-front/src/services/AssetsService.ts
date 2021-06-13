@@ -43,8 +43,12 @@ export const loadAssetsPagination = async (pagination: PaginationTest) => {
 export const loadAsset = async (id: string)=> {
     let res: any;
     try {
+        /**
         res = await axios.get(`${config.nodeUrl}/assets/${id}`);
         console.log(res);
+        /**/
+    const response = await fetch(`${config.nodeUrl}/assets/${id}`);
+    res = await response.json();
     } catch(error) {
         console.error(error);
     }

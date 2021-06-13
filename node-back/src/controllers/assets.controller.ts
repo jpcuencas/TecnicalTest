@@ -31,3 +31,15 @@ export const getAssetsGraphql: RequestHandler = async (req: any, res: any) => {
     console.log('----- results ---------')
     console.log(result)
 }
+
+export const getAsset : RequestHandler = async (req: any, res: any) => {
+    let result = await assetsService.getAsset(req.params.id);
+    console.log('----- results ---------')
+    console.log(result)
+}
+
+export const getAssets : RequestHandler = async (req: any, res: any) => {
+    let result = await assetsService.getAssets();
+    console.log('----- results ---------')
+    console.log(result)
+}

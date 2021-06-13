@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "b400eab0-bfd9-4729-9dac-76c2b690436d",
+		"name": "LansweeperTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.-RequestAutorization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.lansweeper.com/authorize-app/5da0b8b52e8eb7d5324b4818ae09fa78",
+					"protocol": "https",
+					"host": [
+						"app",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"authorize-app",
+						"5da0b8b52e8eb7d5324b4818ae09fa78"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.-RequestAccesToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"client_id\": \"5da0b8b52e8eb7d5324b4818ae09fa78\",\r\n  \"client_secret\": \"m3GGGwsvivbPIpyKtKpcDHvG288rT3lA_jNWr7J5snOocz59sI6WVcY4ywQSCZHx\",\r\n  \"grant_type\": \"authorization_code\",\r\n  \"code\":\"b06b393df62b6f73\",\r\n  \"redirect_uri\": \"http://127.0.0.1:8081/integrations/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/integrations/oauth/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"integrations",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Aitentication",
+						"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjgxMTJhYzU5ODRkYTY1Nzg5ZGQ0ZCJ9.eyJhenAiOiI4MTI1ZGJjNDBmYjMxY2Y0OWRlZmYyYTA0MzE1NTgxYSIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjMxNTc5NDIsImlhdCI6MTYyMzA3MTU0MiwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.B1hHV2fpwJaWATsvGmPNuwzlyRKydUjx5uTXZhCurrw_TmQHj-Yp5nK6PP6mzq8hg_6Qx-tYpVock14DgbcHKkXe3t-U5XFWEn74Alb4Ho0wa7wf_hr0jt09UjV6BMIwb3ZxG_wUW5Cw03ETSLSpzizEH61ezoZEpOICC6o12aRiooQMrQENM18d7lwj1wNldvxz2ZzVvu6GtghNfz1S2Y8G0t3jf8yZH4HhfR1E3tUfuuiJZlMpYgo7VpYT-JLh60d4dt0eAFrS1O_IAQULasjG23yiJERpKgJK4bofApEPUIA4HlIBWwZmVT_zvkkc3-gT8oj3DlY_qMEkvuw397t0mc5H85RUYeJT-7cmZD_5FJDoM0BbKCE6oLVSEuyY6uAWWI93azJHst5wQihdtN5I8KThz5C45Qg1QZ_Sxv0NKgZGtaMmDFaTUirriyr_OSI70ZLNHm1pP9-sig2uiFDNJgc3_04O6ie8Y8CfqYvBvT4n0mXTZ_cViZnwQkKjZFcxdYOtIkuY-4IuoJHiIK730PTjxM6ZLC6YsMnvuNwF-kK-8ywjCnRAasAQK1hfNWb_Mguoa-k4Hhcm_reH4MKzK6sCFNx8nyvg8gjvbY2q-pdjPBQOM_w774-0QSrHSBvJB_wGWWBHzCO7r2CoBq5nnWVjYKb1urG0_5NcGWE",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\r\n  me {\r\n    username\r\n    profiles {\r\n      site {\r\n        id\r\n        name\r\n      }\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get assets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\",\r\n               \"resourceGroup.key\"]\r\n    ) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get assets Pagination First",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: FIRST },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get assets Pagination Next",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: NEXT },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get assets Pagination Previous",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: PREV },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get software in asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjgxMTJhYzU5ODRkYTY1Nzg5ZGQ0ZCJ9.eyJhenAiOiI4MTI1ZGJjNDBmYjMxY2Y0OWRlZmYyYTA0MzE1NTgxYSIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjMxNTk0MTksImlhdCI6MTYyMzA3MzAxOSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.fAnjMk-OFkmboYDeBgeSrhLiW2GJQrKVE4XItEoWPMXMQLBJYNftlaoBxsLPflXOtt8MUMSr_B1bAYua1RLGhDhO2mA1X5PMN9WVZfRiQd3hbiwqTCFvv3k7ny1TRHLOSbguMIEN09MZl-vetEozM2IZ5_JaXt_s9sCVp5R6HEqDXsvuM9OEQeP7dl5HWhYQaLsmm7rPJUKsAs8B8f1PDAGUxqMJcZW5FK41Oe7aO13Fp8hqXrIo8EDkaWsFbpeOiws4meNhcTe_9LmaaLtxRgefaLcPEvrOEsAUO2qTP96qgDada5NIBNqBQeFU0Uw1p3TXr5dQwUrw8-L1p5HRUZIiuFxpOAFa3henVzEgKJ3KIqgt3yxu4ibsNuHwCGTRG2_fZ1x9LvXxZ54f9BqXH5FaGJF6HQyaTv6FIKtrJKwaeqwvcH66ViyFsO1H3yXCnkv8SfpTvf7vUXwX_Nu8FkvztrMmxEn-Xp8--2A-9bi1QGoE3zp8iSUY_H2iZkW7pc13MeKZAI0YBU-6LD5pClo9apLc-dAerDj8P4wkI2i0ZZhd_P9HaS1yXBRUpx82Jaqwnha-kjkny9kSXAHrjDhEruIZ9WtGjynNmQT8ZpYqvv7O45qjE8uAsxlRZGaObod6RASz3gAwNOQYSSLX46Qp1I2gIeqXVHXXtY1lYwQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getSoftwaresByAssetKey {\r\n  site(id: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\") {\r\n    softwares(key: \"MTAzNzczLUFjRlMWYyLWM0YmYtNGNmNy1hM2U4LWzc2V0LTU1NQzZDg3ZWYxZmQ2Mg==\"\r\n    orderDirection: DESC\r\n    orderBy: \"softwares.release\"\r\n    fields: [ \"softwares.installDate\",\r\n              \"softwares.lastChanged\",\r\n              \"softwares.currentUser\",\r\n              \"softwares.msi\",\r\n              \"softwares.name\",\r\n              \"softwares.publisher\",\r\n              \"softwares.operatingSystem\",\r\n              \"softwares.version\",\r\n              \"softwares.release\",\r\n              \"softwares.architecture\",\r\n              \"softwares.status\",\r\n              \"softwares.error\",]) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get software in asset Paginated",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjgxMTJhYzU5ODRkYTY1Nzg5ZGQ0ZCJ9.eyJhenAiOiI4MTI1ZGJjNDBmYjMxY2Y0OWRlZmYyYTA0MzE1NTgxYSIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjMxNTk0MTksImlhdCI6MTYyMzA3MzAxOSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.fAnjMk-OFkmboYDeBgeSrhLiW2GJQrKVE4XItEoWPMXMQLBJYNftlaoBxsLPflXOtt8MUMSr_B1bAYua1RLGhDhO2mA1X5PMN9WVZfRiQd3hbiwqTCFvv3k7ny1TRHLOSbguMIEN09MZl-vetEozM2IZ5_JaXt_s9sCVp5R6HEqDXsvuM9OEQeP7dl5HWhYQaLsmm7rPJUKsAs8B8f1PDAGUxqMJcZW5FK41Oe7aO13Fp8hqXrIo8EDkaWsFbpeOiws4meNhcTe_9LmaaLtxRgefaLcPEvrOEsAUO2qTP96qgDada5NIBNqBQeFU0Uw1p3TXr5dQwUrw8-L1p5HRUZIiuFxpOAFa3henVzEgKJ3KIqgt3yxu4ibsNuHwCGTRG2_fZ1x9LvXxZ54f9BqXH5FaGJF6HQyaTv6FIKtrJKwaeqwvcH66ViyFsO1H3yXCnkv8SfpTvf7vUXwX_Nu8FkvztrMmxEn-Xp8--2A-9bi1QGoE3zp8iSUY_H2iZkW7pc13MeKZAI0YBU-6LD5pClo9apLc-dAerDj8P4wkI2i0ZZhd_P9HaS1yXBRUpx82Jaqwnha-kjkny9kSXAHrjDhEruIZ9WtGjynNmQT8ZpYqvv7O45qjE8uAsxlRZGaObod6RASz3gAwNOQYSSLX46Qp1I2gIeqXVHXXtY1lYwQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query getSoftwaresByAssetKey {\r\n  site(id: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\") {\r\n    softwares(key: \"MTAzNzczLUFjRlMWYyLWM0YmYtNGNmNy1hM2U4LWzc2V0LTU1NQzZDg3ZWYxZmQ2Mg==\"\r\n    orderDirection: DESC\r\n    orderBy: \"softwares.release\"\r\n    fields: [ \"softwares.installDate\",\r\n              \"softwares.lastChanged\",\r\n              \"softwares.currentUser\",\r\n              \"softwares.msi\",\r\n              \"softwares.name\",\r\n              \"softwares.publisher\",\r\n              \"softwares.operatingSystem\",\r\n              \"softwares.version\",\r\n              \"softwares.release\",\r\n              \"softwares.architecture\",\r\n              \"softwares.status\",\r\n              \"softwares.error\",]) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/v2/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"client_id\": \"5da0b8b52e8eb7d5324b4818ae09fa78\",\r\n  \"client_secret\": \"m3GGGwsvivbPIpyKtKpcDHvG288rT3lA_jNWr7J5snOocz59sI6WVcY4ywQSCZHx\",\r\n  \"grant_type\": \"refresh_token\",\r\n  \"refresh_token\": \"zHGSvXZ597v3L6wEAh8U8ylulUhhgUT1JobzCLbZF5cqi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.lansweeper.com/api/integrations/oauth/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"api",
+						"integrations",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Api Pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://app.lansweeper.com/integrations/",
+					"protocol": "https",
+					"host": [
+						"app",
+						"lansweeper",
+						"com"
+					],
+					"path": [
+						"integrations",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

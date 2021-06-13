@@ -15,3 +15,14 @@ export const loadSoftwareGrapPagination = async (key: string, pagination: Pagina
     }
     return  res?.data;
 };
+
+export const loadSoftwareGrap = async (key: string) => {
+    let res: any;
+    let cookies: any;
+    try {
+        res = await axios.get(`${config.nodeUrl}/softwareGrap/${key}`);
+    } catch(error) {
+        console.error(error);
+    }
+    return  res?.data;
+};

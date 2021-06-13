@@ -31,6 +31,7 @@ let assets: Asset[] =  [];
             console.log(res?.data?.data?.site)
             console.log(res?.data?.data?.site?.assetResources)
             console.log(res?.data?.data?.site?.assetResources?.items)
+            assets = res?.data?.data?.site?.assetResources?.items;
         } catch (error) {
             console.error(error);
             if(error.status ==403) {
@@ -65,6 +66,7 @@ const getGraphqlAssetsPag = async (token: string, idSite: string, pagination:Pag
             console.log(res?.data)
             console.log(res?.data?.data?.site)
             console.log(res?.data?.data?.site?.assetResources?.items)
+            assets = res?.data?.data?.site?.assetResources?.items;
         } catch (error) {
             console.error(error);
             console.error(error?.response);

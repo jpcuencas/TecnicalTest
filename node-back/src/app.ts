@@ -16,7 +16,7 @@ app.set('port', config.PORT);
 
 // MIDDLEWARES //
 //loggers http
-app.use(morgan(config.enviroment));
+app.use(morgan('dev'));
 // cruzar servers
 app.use(cors());
 // set session

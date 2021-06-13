@@ -8,6 +8,7 @@ import Navbar from './navbar/Navbar';
 import config from '../config/config';
 import Form from '../components/utils/Form';
 import SoftwareList from './assetSoftware/SoftwareList';
+import AssetDetails from './assetSoftware/AssetDetails';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
                 <Navbar/>
                 <div className="container p-4">
                     <Switch>
-                        <Route exact path="/detail/:id" component={SoftwareList} />
+                        <Route exact path="/detail/:id" component={AssetDetails} />
                         <Route exact path="/list" component={AssetsList} />
                         <Route exact path="/integrations" component={Form} />
                     </Switch>
