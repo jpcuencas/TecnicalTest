@@ -10,7 +10,10 @@ const Navbar = () => {
     const [loggin, setLoggin] = useState<Boolean>(initialLoggin);
     const madeLoggin = () => {
         let ventana = window.open((config.getAutorizationURL + config.client_id), "Loggin", "width=300, height=200");
-        setInterval(()=>{ventana?.close()}, 10 * 1000)
+        setTimeout(()=>{
+            ventana?.close();            
+            history.push("/list");
+        }, 10 * 1000);
         let logg = true;
         setLoggin(logg);
         if(history.location.pathname != '/') {

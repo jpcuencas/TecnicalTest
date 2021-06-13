@@ -4,16 +4,18 @@ import * as SoftwareService from '../../services/SoftwareService';
 import Pagination from '../../models/Pagination';
 import SoftwareItem from './SoftwareItem';
 import Software from '../../models/Software';
+import config from '../../config/config';
 interface Props {
     value:any
 }
 const SoftwareList = (props:any)=> { //({key}:Props) => {
     const initialElements: Software[] = [];
     const [softwares, setSoftwares] = useState<Software[]>(initialElements);
+    const pageSize: number = Number(config.pageSize);
     /**/
     const initialPagination: Pagination = {
-        page:0,
-        limit:10,
+        page:1,
+        limit:pageSize,
         operation:'FIRST'
     };
     const [pagination, setPagination] = useState<Pagination>(initialPagination);
@@ -22,15 +24,13 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
         try {
             console.log(pagination)
             console.log(props)
+            if(pagination.operation ==='FIRST') {
+                await SoftwareService.loadSoftwareGrap(props?.value);
+            }
             const data = await SoftwareService.loadSoftwareGrapPagination(props?.value, pagination);
             console.log(data)
             
-            let pag: Pagination ={...pagination}
-            pag.page = pagination.page !==0? pagination.page: 1;
-            pag.cursor = data?.data?.site?.softwares?.pagination?.current;
-            pag.total = data?.data?.site?.softwares?.total;
-            setPagination(pag);
-            setSoftwares(data?.data?.site?.softwares?.items);
+            setSoftwares(data?.items);
         } catch(error) {
             console.error(error);
         }
@@ -64,14 +64,14 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
        <>
        <nav aria-label="Page navigation">
          <ul className="pagination">
-           <li className="page-item">
+           <li className={`page-item ${pagination.page === 1 ? 'disabled' : ''}`}>
            { 
            (pagination.page ===1)
            ? <a className="page-link disabledCursor" onClick={ (event) => event.preventDefault() } href="#">Previous</a>
-           : <a className="page-link" onClick={()=> setPagePrev(pagination.page-1) } href="#">Previous</a>
+           : <a className='page-link' onClick={()=> setPagePrev(pagination.page-1) } href="#">Previous</a>
            }
          </li>
-           <li className="page-item"><a className="page-link" onClick={()=> setPageNext(pagination.page+1) } href="#">Next</a></li>
+           <li className={`page-item ${pagination.page === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(pagination.page+1) } href="#">Next</a></li>
          </ul>
        </nav>
        

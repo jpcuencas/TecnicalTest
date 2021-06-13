@@ -15,6 +15,7 @@ router.get('/assetsGrap', assetsCtrl.getAssetsGraphql);
 router.get('/assetsGrapPag', assetsCtrl.getAssetsGraphqlPag);
 
 router.get('/softwareGrap/:key', softwareCtrl.getSoftwareGraphql);
-router.get('/softwareGrapPag/:key', softwareCtrl.getSoftwareGraphqlPag);
+router.get('/softwareGrapPag/:key', softwareCtrl.getSoftwarePag);
+router.get('/software/:key', softwareCtrl.getSoftware);
 
 export default router;

@@ -4,14 +4,16 @@ import Asset from '../../models/Asset/Asset';
 import Pagination from '../../models/Pagination';
 import AssetItem from './AssetsItem';
 import { loadAssetsGrapPagination } from '../../services/AssetsService';
+import config from '../../config/config';
 
 const AssetsList = () => {
     const initialAssets: Asset[] = [];
     const [assets, setAssets] = useState<Asset[]>(initialAssets);
+    const pageSize: number = Number(config.pageSize);
     /**/
     const initialPagination: Pagination = {
         page:0,
-        limit:10,
+        limit:pageSize,
         operation:'FIRST'
     };
     const [pagination, setPagination] = useState<Pagination>(initialPagination);
@@ -57,14 +59,14 @@ const AssetsList = () => {
        <>
        <nav aria-label="Page navigation">
          <ul className="pagination">
-           <li className="page-item">
+           <li className={`page-item ${pagination.page === 1 ? 'disabled' : ''}`}>
            { 
            (pagination.page ===1)
            ? <a className="page-link disabledCursor" onClick={ (event) => event.preventDefault() } href="#">Previous</a>
-           : <a className="page-link" onClick={()=> setPagePrev(pagination.page-1) } href="#">Previous</a>
+           : <a className='page-link' onClick={()=> setPagePrev(pagination.page-1) } href="#">Previous</a>
            }
          </li>
-           <li className="page-item"><a className="page-link" onClick={()=> setPageNext(pagination.page+1) } href="#">Next</a></li>
+           <li className={`page-item ${pagination.page === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(pagination.page+1) } href="#">Next</a></li>
          </ul>
        </nav>
        {

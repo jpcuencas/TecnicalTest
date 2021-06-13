@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from 'axios';
 
 import config from '../config/config';
 import Pagination from '../models/Pagination';
-import PaginationTest from '../models/PaginationTest';
 
 export const loadAssets = async ()=> {
     let res: any;
@@ -28,7 +27,7 @@ export const loadAssetsGrapPagination = async (pagination: Pagination) => {
     return  res?.data;
 };
 
-export const loadAssetsPagination = async (pagination: PaginationTest) => {
+export const loadAssetsPagination = async (pagination: Pagination) => {
     let res: any;
     try {
         res = await axios.get(`${config.nodeUrl}/assets`,{

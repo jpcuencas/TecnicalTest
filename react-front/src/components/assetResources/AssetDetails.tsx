@@ -29,7 +29,7 @@ const AssetDetails = (props:any) => {
     useEffect( () => {
         console.log(props)
         loadAssetDetails(props.match.params.id);
-    }, [asset]);
+    }, []);
    
     if(asset) {
        return (

@@ -5,6 +5,8 @@ export default interface Pagination {
     cursor?: string;
     limit: number;
     operation: string;
+    prePage?: number;
+    nextPage?: number;
     total?: number;
     totalPages?: number;
   }

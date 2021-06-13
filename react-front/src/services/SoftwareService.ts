@@ -5,9 +5,8 @@ import Pagination from '../models/Pagination';
 
 export const loadSoftwareGrapPagination = async (key: string, pagination: Pagination) => {
     let res: any;
-    let cookies: any;
     try {
-        res = await axios.get(`${config.nodeUrl}/softwareGrap/${key}`,{
+        res = await axios.get(`${config.nodeUrl}/softwareGrapPag/${key}`,{
         params: pagination
       });
     } catch(error) {
@@ -18,7 +17,6 @@ export const loadSoftwareGrapPagination = async (key: string, pagination: Pagina
 
 export const loadSoftwareGrap = async (key: string) => {
     let res: any;
-    let cookies: any;
     try {
         res = await axios.get(`${config.nodeUrl}/softwareGrap/${key}`);
     } catch(error) {

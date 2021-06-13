@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import oauthService from '../services/oauth.service';
 import sitesService from '../services/sites.service';
 import softwareService from '../services/software.service';
-
+/**
 export const getSoftwareGraphqlPag: RequestHandler = async (req: any, res: any) => {
     try {
         console.log('------------------------------')
@@ -21,7 +21,7 @@ export const getSoftwareGraphqlPag: RequestHandler = async (req: any, res: any) 
         res.json(error);
     }
 }
-
+/**/
 
 export const getSoftwareGraphql: RequestHandler = async (req: any, res: any) => {
     try {
@@ -42,3 +42,27 @@ export const getSoftwareGraphql: RequestHandler = async (req: any, res: any) => 
     }
 }
 
+export const getSoftwarePag: RequestHandler = async (req: any, res: any) => {
+    try {
+        console.log('------------------------------')
+        console.log(req.query)
+        console.log('------------------------------')
+        let result = await softwareService.getSoftwarePag(req.params.key, req.query);
+        console.log('----- results ---------')
+        console.log(result)
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
+}
+
+export const getSoftware : RequestHandler = async (req: any, res: any) => {
+    try {
+        let result = await softwareService.getSoftware();
+        console.log('----- results ---------')
+        console.log(result)
+        res.json(result);
+    } catch (error) {
+        res.json(error);
+    }
+}
