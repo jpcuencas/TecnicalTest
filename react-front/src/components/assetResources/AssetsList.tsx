@@ -9,6 +9,8 @@ import config from '../../config/config';
 const AssetsList = () => {
     const initialAssets: Asset[] = [];
     const [assets, setAssets] = useState<Asset[]>(initialAssets);
+    
+  const [isLoading, setLoading] = useState(false);
     const pageSize: number = Number(config.pageSize);
     /**/
     const initialPagination: Pagination = {
@@ -20,6 +22,7 @@ const AssetsList = () => {
     
     const loadPagination = async(pagination: any) => {
         try {
+            setLoading(true);
             console.log('works');
             console.log(pagination)
             const data = await AssetsService.loadAssetsGrapPagination(pagination);
@@ -34,6 +37,7 @@ const AssetsList = () => {
         } catch(error) {
             console.error(error);
         }
+        setLoading(false);
     };
     const setPageNext = (page: number) => {
         let pag: Pagination ={...pagination}
@@ -54,7 +58,7 @@ const AssetsList = () => {
         loadPagination(pagination);
     }, []);
    
-    if(assets?.length) {
+    if(assets?.length && !isLoading ) {
        return (
        <>
        <nav aria-label="Page navigation">
@@ -94,8 +98,10 @@ const AssetsList = () => {
       </table>
       </>
       );
-    } else {
+    } else if(!isLoading ) {
         return <p>Has no elements</p>;
+    } else {
+        return <p>Loading...</p>;
     }
 }
 //  <AssetsItem element={assets[0]} />
