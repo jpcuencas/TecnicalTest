@@ -10,6 +10,7 @@ interface Props {
 }
 const SoftwareList = (props:any)=> { //({key}:Props) => {
     const initialElements: Software[] = [];
+    const [isLoading, setLoading] = useState(false);
     const [softwares, setSoftwares] = useState<Software[]>(initialElements);
     const pageSize: number = Number(config.pageSize);
     /**/
@@ -22,6 +23,7 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
     
     const loadPagination = async(pagination: any) => {
         try {
+            setLoading(true);
             console.log(pagination)
             console.log(props)
             if(pagination.operation ==='FIRST') {
@@ -34,6 +36,7 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
         } catch(error) {
             console.error(error);
         }
+        setLoading(false);
     };
     const setPageNext = (page: number) => {
         let pag: Pagination ={...pagination}
@@ -60,7 +63,7 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
        return (
        <>
        {
-       (softwares?.length)?
+       (softwares?.length && !isLoading )?
        <>
        <nav aria-label="Page navigation">
          <ul className="pagination">
@@ -96,7 +99,10 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
       </table>
       </>
     :
+    (!isLoading )?
      <p>Has no elements</p>
+     :
+     <p>Loading...</p>
     }
     </>
     );
