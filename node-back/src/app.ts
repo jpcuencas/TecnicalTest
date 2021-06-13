@@ -5,7 +5,6 @@ import morgan from 'morgan';
 import cors from 'cors';
 //import cookieParser from 'cookie-parser';
 import { graphqlHTTP } from "express-graphql";
-import schema from './graphql/schema';
 
 import config from './config/config';
 import assetsRoutes from './routes/assets.routes';

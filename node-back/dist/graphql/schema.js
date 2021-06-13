@@ -1,5 +1,7 @@
-import { makeExecutableSchema } from 'graphql-tools';
-import {resolvers} from './resolvers';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const graphql_tools_1 = require("graphql-tools");
+const resolvers_1 = require("./resolvers");
 // graphql definition (name requerido)
 // query (opcion por defecto) consulta
 /*
@@ -22,7 +24,6 @@ import {resolvers} from './resolvers';
     }
 }
 */
-
 // mutation modificar los objetos
 /*
 mutation {
@@ -110,8 +111,8 @@ const typeDefs = `
         age: Int
     }
     `;
-
-export default makeExecutableSchema({
+exports.default = graphql_tools_1.makeExecutableSchema({
     typeDefs: typeDefs,
-    resolvers: resolvers
+    resolvers: resolvers_1.resolvers
 });
+//# sourceMappingURL=schema.js.map

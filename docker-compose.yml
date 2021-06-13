@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  backend:
+    env_file:
+        "./node-back/.env"
+    build:
+      context: ./node-back
+      dockerfile: ./Dockerfile
+    image: "jcuencas/node-backend"
+    ports:
+      - "8081:8081"
+  frontend:
+    build:
+      context: ./react-front
+      dockerfile: ./Dockerfile
+    image: "jcuencas/react-frontend"
+    ports:
+      - "5000:5000"
+    links:
+      - "backend"
