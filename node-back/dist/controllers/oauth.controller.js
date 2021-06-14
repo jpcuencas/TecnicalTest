@@ -65,6 +65,7 @@ const getRefresh = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         }
         /**/
         req.session.token = (_d = resp === null || resp === void 0 ? void 0 : resp.data) === null || _d === void 0 ? void 0 : _d.access_token;
+        res.end();
     }
     else {
         res.send("Need Loggin!");

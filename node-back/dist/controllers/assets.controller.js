@@ -41,21 +41,39 @@ exports.getAssetsGraphqlPag = getAssetsGraphqlPag;
 const getAssetsGraphql = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(oauth_service_1.default.getTokens());
     console.log(sites_service_1.default.getId());
-    let result = yield assets_service_1.default.getGraphqlAssets(oauth_service_1.default.getTokens().token, sites_service_1.default.getId());
-    console.log('----- results ---------');
-    console.log(result);
+    try {
+        let result = yield assets_service_1.default.getGraphqlAssets(oauth_service_1.default.getTokens().token, sites_service_1.default.getId());
+        console.log('----- results ---------');
+        console.log(result);
+        res.json(result);
+    }
+    catch (error) {
+        res.json(error);
+    }
 });
 exports.getAssetsGraphql = getAssetsGraphql;
 const getAsset = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let result = yield assets_service_1.default.getAsset(req.params.id);
-    console.log('----- results ---------');
-    console.log(result);
+    try {
+        let result = yield assets_service_1.default.getAsset(req.params.id);
+        console.log('----- results ---------');
+        console.log(result);
+        res.json(result);
+    }
+    catch (error) {
+        res.json(error);
+    }
 });
 exports.getAsset = getAsset;
 const getAssets = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let result = yield assets_service_1.default.getAssets();
-    console.log('----- results ---------');
-    console.log(result);
+    try {
+        let result = yield assets_service_1.default.getAssets();
+        console.log('----- results ---------');
+        console.log(result);
+        res.json(result);
+    }
+    catch (error) {
+        res.json(error);
+    }
 });
 exports.getAssets = getAssets;
 //# sourceMappingURL=assets.controller.js.map

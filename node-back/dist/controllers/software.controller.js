@@ -12,30 +12,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSoftwareGraphql = exports.getSoftwareGraphqlPag = void 0;
+exports.getSoftware = exports.getSoftwarePag = exports.getSoftwareGraphql = void 0;
 const oauth_service_1 = __importDefault(require("../services/oauth.service"));
 const sites_service_1 = __importDefault(require("../services/sites.service"));
 const software_service_1 = __importDefault(require("../services/software.service"));
-const getSoftwareGraphqlPag = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+/**
+export const getSoftwareGraphqlPag: RequestHandler = async (req: any, res: any) => {
     try {
-        console.log('------------------------------');
-        console.log(req.query);
-        console.log('------------------------------');
-        console.log(req.session);
-        console.log('------------------------------');
-        console.log(req.cookies);
-        console.log(oauth_service_1.default.getTokens());
-        console.log(sites_service_1.default.getId());
-        let result = yield software_service_1.default.getGraphqlSoftwarePag(oauth_service_1.default.getTokens().token, sites_service_1.default.getId(), req.params.key, req.query);
-        console.log('----- results ---------');
-        console.log(result);
+        console.log('------------------------------')
+        console.log(req.query)
+        console.log('------------------------------')
+        console.log(req.session)
+        console.log('------------------------------')
+        console.log(req.cookies)
+        console.log(oauthService.getTokens())
+        console.log(sitesService.getId())
+        let result = await softwareService.getGraphqlSoftwarePag(oauthService.getTokens().token, sitesService.getId(), req.params.key, req.query);
+        console.log('----- results ---------')
+        console.log(result)
         res.json(result);
-    }
-    catch (error) {
+    } catch (error) {
         res.json(error);
     }
-});
-exports.getSoftwareGraphqlPag = getSoftwareGraphqlPag;
+}
+/**/
 const getSoftwareGraphql = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log('------------------------------');
@@ -56,4 +56,31 @@ const getSoftwareGraphql = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.getSoftwareGraphql = getSoftwareGraphql;
+const getSoftwarePag = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log('------------------------------');
+        console.log(req.query);
+        console.log('------------------------------');
+        let result = yield software_service_1.default.getSoftwarePag(req.params.key, req.query);
+        console.log('----- results ---------');
+        console.log(result);
+        res.json(result);
+    }
+    catch (error) {
+        res.json(error);
+    }
+});
+exports.getSoftwarePag = getSoftwarePag;
+const getSoftware = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let result = yield software_service_1.default.getSoftware();
+        console.log('----- results ---------');
+        console.log(result);
+        res.json(result);
+    }
+    catch (error) {
+        res.json(error);
+    }
+});
+exports.getSoftware = getSoftware;
 //# sourceMappingURL=software.controller.js.map
