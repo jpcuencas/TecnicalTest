@@ -36,7 +36,7 @@ describe('GET /assets', () => {
         let id = 0;
         const response = yield api.get('/assets/' + id)
             .set('Accept', 'application/json')
-            .expect(204);
+            .expect(200);
     }));
 });
 afterAll(() => {

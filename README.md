@@ -21,7 +21,6 @@ First you must loggin click on the button loggin from de main screen
 
 then you access to assets table with all data and check  the flow
 
-
 ## Docker
 If you hav docker and dockerDestop installed you can use he command
 windows:
