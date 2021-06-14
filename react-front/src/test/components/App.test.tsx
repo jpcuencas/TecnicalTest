@@ -5,7 +5,7 @@ describe('App component', () => {
 
     it('renders app component', () => {
       render(<App />);
-      //const linkElement = screen.getAllByText(/learn react/i);
-      //expect(linkElement).toBeInTheDocument();
+      const linkElement = screen.getAllByText(/Loggin/i)[0];
+      expect(linkElement).toBeInTheDocument();
     });
 });

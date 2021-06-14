@@ -7,8 +7,8 @@ describe('Footer component', () => {
       render(<Footer />);
       
       //const pElement = await screen.find('developed by jcuencas');
-      //const pElement = screen.getAllByText(/developed by jcuencas/i');
-      //expect(pElement).toBeInTheDocument();
-      expect(screen.getByText("developed by jcuencas")).toBeInTheDocument();
+      const pElement = screen.getAllByText(/developed by jcuencas/i)[0];
+      expect(pElement).toBeInTheDocument();
+      //expect(screen.getByText("developed by jcuencas")).toBeInTheDocument();
     });
 });
