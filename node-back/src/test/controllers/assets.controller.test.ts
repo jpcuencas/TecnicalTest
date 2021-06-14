@@ -6,8 +6,8 @@ let api: supertest.SuperTest<supertest.Test>;
 //let mockGetAssets:  jest.Mock<typeof getAssets, any>;
 beforeAll(() => {
     api = supertest(app);
-    jest.mock('../../services/assets.service');   
-        
+    jest.mock('../../services/assets.service');
+
   });
 
 describe('GET /assets', () => {
@@ -20,15 +20,13 @@ describe('GET /assets', () => {
     });
 
     xit('GET all assets check content', async() => {
-     
         const response = await api.get('/assets');
         expect(response?.body||[]).toHaveLength(0);
     });
 
 
     it('GET one assets', async() => {
-     
-        let id: number=0;
+        let id: number = 0;
          const response = await api.get('/assets/' + id)
             .set('Accept', 'application/json')
             .expect(200);

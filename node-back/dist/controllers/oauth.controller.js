@@ -15,62 +15,61 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRefresh = exports.getRedirecct = exports.getCode = void 0;
 const oauth_service_1 = __importDefault(require("../services/oauth.service"));
 const sites_service_1 = __importDefault(require("../services/sites.service"));
-const getCode = (req, res) => {
+const getCode = () => {
     return oauth_service_1.default.getCode();
 };
 exports.getCode = getCode;
 const getRedirecct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
     const code = req.query.code;
     console.log('code');
     console.log(code);
     let resp = yield oauth_service_1.default.getAutentication(code);
     console.log(resp === null || resp === void 0 ? void 0 : resp.data);
-    /**
-    if(!req.cookies.access_token) {
-        res.cookie('access_token', resp?.data?.access_token, {maxAge: 900000, httpOnly: true});
-        res.cookie('refresh_token', resp?.data?.refresh_token, {maxAge: 900000, httpOnly: true});
+    /**/
+    if (!req.cookies.access_token) {
+        res.cookie('access_token', (_a = resp === null || resp === void 0 ? void 0 : resp.data) === null || _a === void 0 ? void 0 : _a.access_token, { maxAge: 900000, httpOnly: true });
+        res.cookie('refresh_token', (_b = resp === null || resp === void 0 ? void 0 : resp.data) === null || _b === void 0 ? void 0 : _b.refresh_token, { maxAge: 900000, httpOnly: true });
     }
     console.log(res.cookies);
     /**/
-    req.session.refreshToken = (_a = resp === null || resp === void 0 ? void 0 : resp.data) === null || _a === void 0 ? void 0 : _a.refresh_token;
-    req.session.token = (_b = resp === null || resp === void 0 ? void 0 : resp.data) === null || _b === void 0 ? void 0 : _b.access_token;
+    req.session.refreshToken = (_c = resp === null || resp === void 0 ? void 0 : resp.data) === null || _c === void 0 ? void 0 : _c.refresh_token;
+    req.session.token = (_d = resp === null || resp === void 0 ? void 0 : resp.data) === null || _d === void 0 ? void 0 : _d.access_token;
     /**/
-    let siteId = yield sites_service_1.default.getGraphqlSites((_c = resp === null || resp === void 0 ? void 0 : resp.data) === null || _c === void 0 ? void 0 : _c.access_token);
+    const siteId = yield sites_service_1.default.getGraphqlSites((_e = resp === null || resp === void 0 ? void 0 : resp.data) === null || _e === void 0 ? void 0 : _e.access_token);
     req.session.siteId = siteId;
     console.log(req.session);
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'X-Requested-With');
     /**/
-    //res.cookie('site_id', siteId, {maxAge: 900000, httpOnly: true});
-    //console.log(req.cookies);
+    res.cookie('site_id', siteId, { maxAge: 900000, httpOnly: true });
     res.end();
     /**/
 });
 exports.getRedirecct = getRedirecct;
 const getRefresh = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _d;
+    var _f, _g;
     console.log(req === null || req === void 0 ? void 0 : req.cookies);
     console.log(req === null || req === void 0 ? void 0 : req.session);
     if (req.session.refreshToken) {
-        let resp = yield oauth_service_1.default.getRefresh(req.session.refreshToken);
+        const resp = yield oauth_service_1.default.getRefresh(req.session.refreshToken);
         console.log(resp.data);
         console.log(resp.data.access_token);
-        /**
-        if(!req.cookies.access_token) {
-            res.cookie('access_token', resp?.data?.access_token, {
+        /**/
+        if (!req.cookies.access_token) {
+            res.cookie('access_token', (_f = resp === null || resp === void 0 ? void 0 : resp.data) === null || _f === void 0 ? void 0 : _f.access_token, {
                 expires: new Date(new Date().getTime() + 86000 * 1000),
                 httpOnly: true,
-            }).send("cookie being reinitialised");
+            });
         }
         /**/
-        req.session.token = (_d = resp === null || resp === void 0 ? void 0 : resp.data) === null || _d === void 0 ? void 0 : _d.access_token;
+        req.session.token = (_g = resp === null || resp === void 0 ? void 0 : resp.data) === null || _g === void 0 ? void 0 : _g.access_token;
         res.end();
     }
     else {
-        res.send("Need Loggin!");
+        res.send('Need Loggin!');
     }
-    /** */
+    /**/
 });
 exports.getRefresh = getRefresh;
 //# sourceMappingURL=oauth.controller.js.map

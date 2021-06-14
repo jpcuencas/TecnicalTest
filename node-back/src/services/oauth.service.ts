@@ -1,5 +1,4 @@
 import axios from 'axios';
-import https from 'https';
 import config from '../config/config';
 
 let oauthBody = 
@@ -32,7 +31,10 @@ export default {
         let res:any;
         try {
             let url: string = config.getAutorizationURL + config.client_id;
-            res = await axios.get(url, { headers: {"Access-Control-Allow-Origin": "*"} });
+            res = await axios.get(url, { 
+                headers: {
+                'Access-Control-Allow-Origin': '*'
+            } });
         } catch (error) {
             console.error(error);
             console.error(error?.response);
@@ -50,7 +52,7 @@ export default {
             res = await axios.post(url, oauthBody, {
               headers: {
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*"
+                'Access-Control-Allow-Origin': '*',
               }
             });
         } catch (error) {
@@ -58,7 +60,7 @@ export default {
             console.error(error?.response);
             return error?.response;
         }
-        //console.log(res);
+        
         token = res?.data?.access_token
         refreshtoken = res?.data?.refresh_token
         return res;
@@ -71,7 +73,7 @@ export default {
             res = await axios.post(url, refreshBody, {
               headers: {
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin": "*"
+                'Access-Control-Allow-Origin': '*'
               }
             });
         } catch (error) {

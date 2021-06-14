@@ -15,22 +15,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const config_1 = __importDefault(require("../config/config"));
 const oauth_service_1 = __importDefault(require("./oauth.service"));
-/**/
 let assets = [];
-/**/
+let check = false;
 const getGraphqlAssets = (token, idSite) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
     let res;
     console.log('idSite');
     console.log(idSite);
     if (idSite) {
-        let body = { "query": "query getAssetResources {site(id: \"" + idSite + "\") { assetResources( fields: [\"assetBasicInfo.name\", \"assetBasicInfo.type\",\"assetCustom.model\",\"assetCustom.manufacturer\",\"resourceGroup.assetKey\",\"key\"] ) {total,  items } } }",
+        const body = { "query": "query getAssetResources {site(id: \"" + idSite + "\") { assetResources( fields: [\"assetBasicInfo.name\", \"assetBasicInfo.type\",\"assetCustom.model\",\"assetCustom.manufacturer\",\"resourceGroup.assetKey\",\"key\"] ) {total,  items } } }",
             "operationName": "getAssetResources" };
         try {
             res = yield axios_1.default.post(config_1.default.apiURL, body, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer ' + token,
                 }
             });
             console.log('response');
@@ -43,8 +42,12 @@ const getGraphqlAssets = (token, idSite) => __awaiter(void 0, void 0, void 0, fu
         }
         catch (error) {
             console.error(error);
-            if (error.status == 403) {
-                oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+            if (error.status === 401 && !check) {
+                yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+                check = true;
+                const result = yield getGraphqlAssets(token, idSite);
+                check = false;
+                return result;
             }
             return error === null || error === void 0 ? void 0 : error.response;
         }
@@ -58,13 +61,13 @@ const getGraphqlAssetsPag = (token, idSite, pagination) => __awaiter(void 0, voi
     console.log('idSite');
     console.log(idSite);
     if (idSite) {
-        let body = (pagination.page == 0) ? { "query": `query getAssetResources { site(id: \"${idSite}\") { assetResources( pagination: { limit: ${pagination.limit}, page: FIRST }, fields: ["assetBasicInfo.name", "assetBasicInfo.type","assetCustom.model","assetCustom.manufacturer","resourceGroup.assetKey","key"] ) { total pagination { limit current next page  } items } } }` }
+        const body = (pagination.page === 0) ? { "query": `query getAssetResources { site(id: \"${idSite}\") { assetResources( pagination: { limit: ${pagination.limit}, page: FIRST }, fields: ["assetBasicInfo.name", "assetBasicInfo.type","assetCustom.model","assetCustom.manufacturer","resourceGroup.assetKey","key"] ) { total pagination { limit current next page  } items } } }` }
             : { "query": "query getAssetResources { site(id: \"" + idSite + "\") { assetResources( pagination: { cursor: \"" + pagination.cursor + "\",limit: " + pagination.limit + ", page: " + pagination.operation + " }, fields: [\"assetBasicInfo.name\", \"assetBasicInfo.type\",\"assetCustom.model\",\"assetCustom.manufacturer\",\"resourceGroup.assetKey\",\"key\"] ) { total pagination { limit current next page  } items } } }" };
         try {
             res = yield axios_1.default.post(config_1.default.apiURL, body, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
+                    'Authorization': 'Bearer ' + token,
                 }
             });
             console.log('response');
@@ -77,8 +80,12 @@ const getGraphqlAssetsPag = (token, idSite, pagination) => __awaiter(void 0, voi
         catch (error) {
             console.error(error);
             console.error(error === null || error === void 0 ? void 0 : error.response);
-            if (error.status == 403) {
-                oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+            if (error.status === 401 && !check) {
+                yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+                check = true;
+                const result = yield getGraphqlAssetsPag(token, idSite, pagination);
+                check = false;
+                return result;
             }
             return error === null || error === void 0 ? void 0 : error.response;
         }

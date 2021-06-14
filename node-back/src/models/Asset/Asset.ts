@@ -8,4 +8,4 @@ export default interface Asset {
     assetBasicInfo?: AssetBasicInfo;
     assetCustom?: AssetCustom;
     resourceGroup?: ResourceGroup;
-  }
+};

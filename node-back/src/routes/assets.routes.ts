@@ -3,6 +3,7 @@ import { Router } from 'express';
 import * as softwareCtrl from '../controllers/software.controller';
 import * as assetsCtrl from '../controllers/assets.controller';
 import * as oauthCtrl from '../controllers/oauth.controller';
+
 const router = Router();
 
 router.get('/autorize', oauthCtrl.getCode);

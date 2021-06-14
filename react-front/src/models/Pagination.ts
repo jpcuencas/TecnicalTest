@@ -1,5 +1,3 @@
-
-
 export default interface Pagination {
     page: number;
     cursor?: string;
@@ -9,4 +7,4 @@ export default interface Pagination {
     nextPage?: number;
     total?: number;
     totalPages?: number;
-  }
+};

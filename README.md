@@ -19,7 +19,8 @@ Then the browser are going open on port 5000 with react app
 
 First you must loggin click on the button loggin from de main screen
 
-then you access to assets table with all data and check  the flow
+then you access to assets table with thwe link in the navbar
+then you have all data and check the flow with the details
 
 ## Docker
 If you hav docker and dockerDestop installed you can use he command

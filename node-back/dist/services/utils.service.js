@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const config_1 = __importDefault(require("../config/config"));
 const oauth_service_1 = __importDefault(require("./oauth.service"));
+let check = false;
 // TODO unificar llamadas graphql 
 const getQueryGraphql = (token, graphql) => __awaiter(void 0, void 0, void 0, function* () {
     let res;
@@ -30,8 +31,12 @@ const getQueryGraphql = (token, graphql) => __awaiter(void 0, void 0, void 0, fu
     }
     catch (error) {
         console.error(error);
-        if (error.status == 403) {
-            oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+        if (error.status === 401 && !check) {
+            yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+            check = true;
+            let result = yield getQueryGraphql(token, graphql);
+            check = false;
+            return result;
         }
         return error === null || error === void 0 ? void 0 : error.response;
     }

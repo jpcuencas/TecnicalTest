@@ -16,6 +16,7 @@ const axios_1 = __importDefault(require("axios"));
 const config_1 = __importDefault(require("../config/config"));
 const oauth_service_1 = __importDefault(require("./oauth.service"));
 let idSite = '';
+let check = false;
 const getGraphqlSites = (token) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     let res;
@@ -23,7 +24,7 @@ const getGraphqlSites = (token) => __awaiter(void 0, void 0, void 0, function* (
     let element = {};
     console.log('token');
     console.log(token);
-    let body = { "query": "{ me { username profiles { site { id name } } } }" };
+    const body = { "query": "{ me { username profiles { site { id name } } } }" };
     try {
         res = yield axios_1.default.post(config_1.default.apiURL, body, {
             headers: {
@@ -41,8 +42,12 @@ const getGraphqlSites = (token) => __awaiter(void 0, void 0, void 0, function* (
     }
     catch (error) {
         console.error(error);
-        if (error.status == 403) {
-            oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+        if (error.status === 401 && !check) {
+            yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+            check = true;
+            const result = yield getGraphqlSites(token);
+            check = false;
+            return result;
         }
     }
     return (_k = element === null || element === void 0 ? void 0 : element.site) === null || _k === void 0 ? void 0 : _k.id;

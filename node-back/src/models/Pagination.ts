@@ -7,4 +7,4 @@ export default interface Pagination {
     operation: string;
     total?: number;
     totalPages?: number;
-  }
+};

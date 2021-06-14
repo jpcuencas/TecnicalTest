@@ -5,7 +5,8 @@ import config from '../config/config';
 import Pagination from '../models/Pagination';
 import Software from '../models/Software';
 import oauthService from './oauth.service';
-/**/
+
+let check = false;
 let software: Software[] =  [];
 /**
 
@@ -46,12 +47,12 @@ const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string,
 
 const getGraphqlSoftware = async (token: string, idSite: string, key: string) => {
     let res:any;
-    console.log('idSite')
-    console.log(idSite)
+    console.log('idSite');
+    console.log(idSite);
     if(idSite) {
-        let body = {"query":
-        "query getSoftwaresByAssetKey {site(id: \""+idSite+"\") { softwares(key: \"" +key+ "\" fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\",]) { total items } } }"
-        }
+        const body = {"query":
+        "query getSoftwaresByAssetKey {site(id: \"" + idSite + "\") { softwares(key: \"" + key + "\" fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\",]) { total items } } }"
+        };
         
         try {
             res = await axios.post(config.apiURL, body, {
@@ -60,36 +61,38 @@ const getGraphqlSoftware = async (token: string, idSite: string, key: string) =>
                 'Authorization': 'Bearer ' + token
               }
             });
-            console.log('response')
-            console.log(res)
-            console.log(res?.data)
-            console.log(res?.data?.data)
-            console.log(res?.data?.data?.site)
-            console.log(res?.data?.data?.site?.softwares)
-            console.log(res?.data?.data?.site?.softwares?.items)
+            console.log('response');
+            console.log(res);
+            console.log(res?.data);
+            console.log(res?.data?.data?.site);
+            console.log(res?.data?.data?.site?.softwares?.items);
             software = res?.data?.data?.site?.softwares?.items;
         } catch (error) {
             console.error(error);
-            if(error.status ==403) {
-                oauthService.getRefresh(oauthService.getTokens().refreshToken)
+            if(error.status === 401 && ! check) {
+                await oauthService.getRefresh(oauthService.getTokens().refreshToken);
+                check = true;
+                const result:any = await getGraphqlSoftware(token, idSite, key);
+                check = false;
+                return result;
             }
             return error?.response;
         }
         return res?.data;
     }
-    return 'AreNotLoggin'
+    return 'AreNotLoggin';
 }
 
 const getSoftwarePag = async (key: string, pagination:Pagination) => {
-    let page = pagination.page || 1,
+    const page = pagination.page || 1,
 	per_page = pagination.limit || 10,
 	offset = (page - 1) * per_page;
-    console.log('software')
-    console.log(software)
-	let paginatedItems = software.slice(offset).slice(0, per_page);
-	let total_pages = Math.ceil(software.length / per_page);
-    console.log('----- ITEMS ------')
-    console.log(paginatedItems)
+    console.log('software');
+    console.log(software);
+	const paginatedItems = software.slice(offset).slice(0, per_page);
+	const total_pages = Math.ceil(software.length / per_page);
+    console.log('----- ITEMS ------');
+    console.log(paginatedItems);
     return {
         items:paginatedItems,
         totalPages: total_pages,
@@ -105,5 +108,5 @@ export default {
     getSoftware:getSoftware,
     getSoftwarePag:getSoftwarePag,
     getGraphqlSoftware:getGraphqlSoftware,
-   // getGraphqlSoftwarePag:getGraphqlSoftwarePag,
+   // getGraphqlSoftwarePag:getGraphqlSoftwarePag, // TODO pagination of software in graphql-api is not working
 }

@@ -40,7 +40,11 @@ exports.default = {
         let res;
         try {
             let url = config_1.default.getAutorizationURL + config_1.default.client_id;
-            res = yield axios_1.default.get(url, { headers: { "Access-Control-Allow-Origin": "*" } });
+            res = yield axios_1.default.get(url, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
         }
         catch (error) {
             console.error(error);
@@ -60,7 +64,7 @@ exports.default = {
             res = yield axios_1.default.post(url, oauthBody, {
                 headers: {
                     'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "*"
+                    'Access-Control-Allow-Origin': '*',
                 }
             });
         }
@@ -69,7 +73,6 @@ exports.default = {
             console.error(error === null || error === void 0 ? void 0 : error.response);
             return error === null || error === void 0 ? void 0 : error.response;
         }
-        //console.log(res);
         token = (_a = res === null || res === void 0 ? void 0 : res.data) === null || _a === void 0 ? void 0 : _a.access_token;
         refreshtoken = (_b = res === null || res === void 0 ? void 0 : res.data) === null || _b === void 0 ? void 0 : _b.refresh_token;
         return res;
@@ -83,7 +86,7 @@ exports.default = {
             res = yield axios_1.default.post(url, refreshBody, {
                 headers: {
                     'Content-Type': 'application/json',
-                    "Access-Control-Allow-Origin": "*"
+                    'Access-Control-Allow-Origin': '*'
                 }
             });
         }

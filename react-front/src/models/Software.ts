@@ -6,4 +6,4 @@ export default interface Software {
     publisher?: string;
     version?: string;
     operatingSystem?: string;
-  }
+};

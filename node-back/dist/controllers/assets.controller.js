@@ -26,9 +26,9 @@ const getAssetsGraphqlPag = (req, res) => __awaiter(void 0, void 0, void 0, func
         console.log(req.cookies);
         console.log(oauth_service_1.default.getTokens());
         console.log(sites_service_1.default.getId());
-        let token = req.session.token;
-        let idSite = req.session.siteId;
-        let result = yield assets_service_1.default.getGraphqlAssetsPag(oauth_service_1.default.getTokens().token, sites_service_1.default.getId(), req.query);
+        const token = req.session.token;
+        const idSite = req.session.siteId;
+        const result = yield assets_service_1.default.getGraphqlAssetsPag(oauth_service_1.default.getTokens().token, sites_service_1.default.getId(), req.query);
         console.log('----- Results ---------');
         console.log(result);
         res.json(result);
@@ -42,7 +42,7 @@ const getAssetsGraphql = (req, res) => __awaiter(void 0, void 0, void 0, functio
     console.log(oauth_service_1.default.getTokens());
     console.log(sites_service_1.default.getId());
     try {
-        let result = yield assets_service_1.default.getGraphqlAssets(oauth_service_1.default.getTokens().token, sites_service_1.default.getId());
+        const result = yield assets_service_1.default.getGraphqlAssets(oauth_service_1.default.getTokens().token, sites_service_1.default.getId());
         console.log('----- results ---------');
         console.log(result);
         res.json(result);
@@ -54,7 +54,7 @@ const getAssetsGraphql = (req, res) => __awaiter(void 0, void 0, void 0, functio
 exports.getAssetsGraphql = getAssetsGraphql;
 const getAsset = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let result = yield assets_service_1.default.getAsset(req.params.id);
+        const result = yield assets_service_1.default.getAsset(req.params.id);
         console.log('----- results ---------');
         console.log(result);
         res.json(result);
@@ -66,7 +66,7 @@ const getAsset = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getAsset = getAsset;
 const getAssets = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        let result = yield assets_service_1.default.getAssets();
+        const result = yield assets_service_1.default.getAssets();
         console.log('----- results ---------');
         console.log(result);
         res.json(result);

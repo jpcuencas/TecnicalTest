@@ -9,11 +9,13 @@ const Navbar = () => {
     const initialLoggin: Boolean =false;
     const [loggin, setLoggin] = useState<Boolean>(initialLoggin);
     const madeLoggin = () => {
-        let ventana = window.open((config.getAutorizationURL + config.client_id), "Loggin", "width=300, height=200");
+        let ventana = window.open((config.getAutorizationURL + config.client_id), "Loggin", "width=600, height=400");
+        /**
         setTimeout(()=>{
             ventana?.close();            
             history.push("/list");
         }, 10 * 1000);
+        /**/
         let logg = true;
         setLoggin(logg);
         if(history.location.pathname != '/') {

@@ -1,21 +1,20 @@
 import express from 'express';
-//import session from 'express-session';
 import cookieSession from 'cookie-session';
 import morgan from 'morgan';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-//import { graphqlHTTP } from "express-graphql";
-
 import config from './config/config';
 import assetsRoutes from './routes/assets.routes';
+// import { graphqlHTTP } from "express-graphql";
+// import session from 'express-session';
 
-console.log(config)
+console.log(config);
 
 const app = express();
 app.set('port', config.PORT);
 
 // MIDDLEWARES //
-//loggers http
+// loggers http
 app.use(morgan('dev'));
 // cruzar servers
 app.use(cors());
@@ -23,17 +22,17 @@ app.use(cors());
 /**/
 app.use(cookieSession({
     name: 'session',
-    keys: ['token', 'siteId']
-  }))
+    keys: ['token', 'siteId'],
+  }));
 /**/
 // parse cookie
 app.use(cookieParser());
 // parse json
 app.use(express.json());
 // enviar datos codificacion en uri
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 /**
-//graphql playground setup code
+// graphql playground setup code
 app.use("/graphql",
   graphqlHTTP({
       graphiql: true,
@@ -42,13 +41,14 @@ app.use("/graphql",
 );
 /**/
 // routes
-app.use(assetsRoutes );
+app.use(assetsRoutes);
+
 app.get('/read-session', (req:any, res:any) => {
     console.log(req.session);
   });
 app.get('/read-cookie', (req:any, res:any) => {
     console.log(req.session);
-    res.send({tocken:req.session.token, siteName:req.session.site_id});
+    res.send({ tocken: req.session.token, siteName: req.session.site_id });
   });
   
   app.get('/clear-cookie', (req:any, res:any) => {

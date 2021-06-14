@@ -8,7 +8,7 @@ describe.skip('getAssets function', () => {
     });
 
     it('getAsset get asset by id', async() => {
-        let id: string='0';
+        let id: string = '0';
         let restult = await service.getAsset(id);
         expect((restult||{})).toHaveLength(0);
     });

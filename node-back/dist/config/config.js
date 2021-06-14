@@ -21,18 +21,18 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
-let path;
+let pathFile;
 switch (process.env.NODE_ENV) {
-    case "production":
-        path = `${__dirname}/../../.env.production`;
+    case 'production':
+        pathFile = `${__dirname}/../../.env.production`;
         break;
-    case "test":
-        path = `${__dirname}/../../.env.test`;
+    case 'test':
+        pathFile = `${__dirname}/../../.env.test`;
         break;
     default:
-        path = `${__dirname}/../../.env.development`;
+        pathFile = `${__dirname}/../../.env.development`;
 }
-dotenv.config({ path: path });
+dotenv.config({ path: pathFile });
 exports.default = {
     PORT: process.env.PORT || 3001,
     client_id: process.env.client_id || '5da0b8b52e8eb7d5324b4818ae09fa78',

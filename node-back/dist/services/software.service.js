@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const config_1 = __importDefault(require("../config/config"));
 const oauth_service_1 = __importDefault(require("./oauth.service"));
-/**/
+let check = false;
 let software = [];
 /**
 
@@ -54,12 +54,12 @@ const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string,
 }
 /**/
 const getGraphqlSoftware = (token, idSite, key) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     let res;
     console.log('idSite');
     console.log(idSite);
     if (idSite) {
-        let body = { "query": "query getSoftwaresByAssetKey {site(id: \"" + idSite + "\") { softwares(key: \"" + key + "\" fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\",]) { total items } } }"
+        const body = { "query": "query getSoftwaresByAssetKey {site(id: \"" + idSite + "\") { softwares(key: \"" + key + "\" fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\",]) { total items } } }"
         };
         try {
             res = yield axios_1.default.post(config_1.default.apiURL, body, {
@@ -71,16 +71,18 @@ const getGraphqlSoftware = (token, idSite, key) => __awaiter(void 0, void 0, voi
             console.log('response');
             console.log(res);
             console.log(res === null || res === void 0 ? void 0 : res.data);
-            console.log((_a = res === null || res === void 0 ? void 0 : res.data) === null || _a === void 0 ? void 0 : _a.data);
-            console.log((_c = (_b = res === null || res === void 0 ? void 0 : res.data) === null || _b === void 0 ? void 0 : _b.data) === null || _c === void 0 ? void 0 : _c.site);
-            console.log((_f = (_e = (_d = res === null || res === void 0 ? void 0 : res.data) === null || _d === void 0 ? void 0 : _d.data) === null || _e === void 0 ? void 0 : _e.site) === null || _f === void 0 ? void 0 : _f.softwares);
-            console.log((_k = (_j = (_h = (_g = res === null || res === void 0 ? void 0 : res.data) === null || _g === void 0 ? void 0 : _g.data) === null || _h === void 0 ? void 0 : _h.site) === null || _j === void 0 ? void 0 : _j.softwares) === null || _k === void 0 ? void 0 : _k.items);
-            software = (_p = (_o = (_m = (_l = res === null || res === void 0 ? void 0 : res.data) === null || _l === void 0 ? void 0 : _l.data) === null || _m === void 0 ? void 0 : _m.site) === null || _o === void 0 ? void 0 : _o.softwares) === null || _p === void 0 ? void 0 : _p.items;
+            console.log((_b = (_a = res === null || res === void 0 ? void 0 : res.data) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.site);
+            console.log((_f = (_e = (_d = (_c = res === null || res === void 0 ? void 0 : res.data) === null || _c === void 0 ? void 0 : _c.data) === null || _d === void 0 ? void 0 : _d.site) === null || _e === void 0 ? void 0 : _e.softwares) === null || _f === void 0 ? void 0 : _f.items);
+            software = (_k = (_j = (_h = (_g = res === null || res === void 0 ? void 0 : res.data) === null || _g === void 0 ? void 0 : _g.data) === null || _h === void 0 ? void 0 : _h.site) === null || _j === void 0 ? void 0 : _j.softwares) === null || _k === void 0 ? void 0 : _k.items;
         }
         catch (error) {
             console.error(error);
-            if (error.status == 403) {
-                oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+            if (error.status === 401 && !check) {
+                yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
+                check = true;
+                const result = yield getGraphqlSoftware(token, idSite, key);
+                check = false;
+                return result;
             }
             return error === null || error === void 0 ? void 0 : error.response;
         }
@@ -89,11 +91,11 @@ const getGraphqlSoftware = (token, idSite, key) => __awaiter(void 0, void 0, voi
     return 'AreNotLoggin';
 });
 const getSoftwarePag = (key, pagination) => __awaiter(void 0, void 0, void 0, function* () {
-    let page = pagination.page || 1, per_page = pagination.limit || 10, offset = (page - 1) * per_page;
+    const page = pagination.page || 1, per_page = pagination.limit || 10, offset = (page - 1) * per_page;
     console.log('software');
     console.log(software);
-    let paginatedItems = software.slice(offset).slice(0, per_page);
-    let total_pages = Math.ceil(software.length / per_page);
+    const paginatedItems = software.slice(offset).slice(0, per_page);
+    const total_pages = Math.ceil(software.length / per_page);
     console.log('----- ITEMS ------');
     console.log(paginatedItems);
     return {
@@ -109,6 +111,6 @@ exports.default = {
     getSoftware: getSoftware,
     getSoftwarePag: getSoftwarePag,
     getGraphqlSoftware: getGraphqlSoftware,
-    // getGraphqlSoftwarePag:getGraphqlSoftwarePag,
+    // getGraphqlSoftwarePag:getGraphqlSoftwarePag, // TODO pagination of software in graphql-api is not working
 };
 //# sourceMappingURL=software.service.js.map

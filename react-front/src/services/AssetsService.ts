@@ -1,9 +1,9 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 import config from '../config/config';
 import Pagination from '../models/Pagination';
 
-export const loadAssets = async ()=> {
+export const loadAssets = async () => {
     let res: any;
     try {
         res = await axios.get(`${config.nodeUrl}/assets`);
@@ -15,13 +15,13 @@ export const loadAssets = async ()=> {
 
 export const loadAssetsGrapPagination = async (pagination: Pagination) => {
     let res: any;
-    let cookies: any;
+    //let cookies: any;
     try {
-        cookies = await axios.get(`${config.nodeUrl}/read-cookie`);
-        res = await axios.get(`${config.nodeUrl}/assetsGrapPag`,{
+        //cookies = await axios.get(`${config.nodeUrl}/read-cookie`);
+        res = await axios.get(`${config.nodeUrl}/assetsGrapPag`, {
         params: pagination
       });
-    } catch(error) {
+    } catch (error) {
         console.error(error);
     }
     return  res?.data;
@@ -33,7 +33,7 @@ export const loadAssetsPagination = async (pagination: Pagination) => {
         res = await axios.get(`${config.nodeUrl}/assets`,{
         params: pagination
       });
-    } catch(error) {
+    } catch (error) {
         console.error(error);
     }
     return  res?.data;
@@ -44,7 +44,7 @@ export const loadAsset = async (id: string)=> {
     try {
         res = await axios.get(`${config.nodeUrl}/assets/${id}`);
         console.log(res);
-    } catch(error) {
+    } catch (error) {
         console.error(error);
     }
     return res?.data;
