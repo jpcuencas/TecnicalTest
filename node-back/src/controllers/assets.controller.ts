@@ -5,12 +5,12 @@ import sitesService from '../services/sites.service';
 
 export const getAssetsGraphqlPag: RequestHandler = async (req: any, res: any) => {
     try {
-        console.log('------------------------------');
+        console.log('----queryParams----');
         console.log(req.query);
-        console.log('------------------------------');
-        console.log(req.session);
-        console.log('------------------------------');
-        console.log(req.cookies);
+        console.log('---coockies---');
+        console.log(req?.cookies);
+        console.log('---session---');
+        console.log(req?.session);
         console.log(oauthService.getTokens());
         console.log(sitesService.getId());
         const token = req.session.token;

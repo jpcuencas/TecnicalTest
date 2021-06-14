@@ -36,7 +36,7 @@ let check = false;
             if(error.status === 401 && ! check) {
                 await oauthService.getRefresh(oauthService.getTokens().refreshToken);
                 check = true;
-                const result:any = await getGraphqlAssets(token, idSite);
+                const result:any = await getGraphqlAssets(oauthService.getTokens().token, idSite);
                 check = false;
                 return result;
             }
@@ -75,7 +75,7 @@ const getGraphqlAssetsPag = async (token: string, idSite: string, pagination:Pag
             if(error.status === 401 && ! check) {
                 await oauthService.getRefresh(oauthService.getTokens().refreshToken);
                 check = true;
-                const result:any = await getGraphqlAssetsPag(token, idSite, pagination);
+                const result:any = await getGraphqlAssetsPag(oauthService.getTokens().token, idSite, pagination);
                 check = false;
                 return result;
             }

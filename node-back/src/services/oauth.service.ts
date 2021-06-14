@@ -24,7 +24,13 @@ export default {
     getTokens: () => {
         return {
             token: token,
-            refreshToken:refreshtoken
+            refreshToken: refreshtoken
+        }
+    },
+    setTokens: (tokens:any) => {
+        return {
+            token: tokens.token,
+            refreshToken: tokens.refreshtoken
         }
     },
     getCode:  async ()=> {

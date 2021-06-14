@@ -38,10 +38,12 @@ export const getRedirecct = async (req: any, res: any) => {
 };
 
 export const getRefresh = async (req: any, res: any) => {
+    console.log('---coockies---');
     console.log(req?.cookies);
+    console.log('---session---');
     console.log(req?.session);
-    if(req.session.refreshToken) {
-        const resp = await authService.getRefresh(req.session.refreshToken);
+    if(authService.getTokens().refreshToken) {
+        const resp = await authService.getRefresh(authService.getTokens().refreshToken);
         console.log(resp.data);
         console.log(resp.data.access_token);
         /**/
@@ -52,6 +54,10 @@ export const getRefresh = async (req: any, res: any) => {
             });
         }
         /**/
+        authService.setTokens({
+            token: resp?.data?.access_token,
+            refreshToken: authService.getTokens().refreshToken
+        });
         req.session.token = resp?.data?.access_token;
         res.end();
     } else {
