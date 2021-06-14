@@ -31,7 +31,7 @@ let check = false;
         if(error.status === 401 && ! check) {
             await oauthService.getRefresh(oauthService.getTokens().refreshToken);
             check = true;
-            const result:any = await getGraphqlSites(token);
+            const result:any = await getGraphqlSites(oauthService.getTokens().token);
             check = false;
             return result;
         }
@@ -41,7 +41,11 @@ let check = false;
 const getId = () => {
     return idSite;
 }
+const setId = (id: string) => {
+    idSite = id;
+}
 export default {
     getId: getId,
+    setId: setId,
     getGraphqlSites: getGraphqlSites,
 }

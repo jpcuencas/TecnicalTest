@@ -19,7 +19,7 @@ let check = false;
         if(error.status === 401 && ! check) {
             await oauthService.getRefresh(oauthService.getTokens().refreshToken);
             check = true;
-            let result:any =await getQueryGraphql(token, graphql);
+            let result:any =await getQueryGraphql(oauthService.getTokens().token, graphql);
             check = false;
             return result;
         }
