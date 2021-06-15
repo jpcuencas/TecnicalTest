@@ -1,7 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const apollo_server_1 = require("apollo-server");
-const typeDefs = apollo_server_1.gql `
+
+
+import { gql } from 'apollo-server';
+
+
+const typeDefs = gql`
   # Comments in GraphQL Strings (such as this one) start with the hash (#) symbol.
 
   type Book {
@@ -76,5 +78,5 @@ type Softwares {
     getSoftware:Software
   }
 `;
-exports.default = typeDefs;
-//# sourceMappingURL=schema.js.map
+
+export default typeDefs;

@@ -1,6 +1,5 @@
 import service from '../../services/assets.service';
 
-
 describe.skip('getAssets function', () => {
     it('getAssets get all asset', async() => {
         let restult = await service.getAssets();

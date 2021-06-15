@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import * as SoftwareService from '../../services/SoftwareService';
 import Pagination from '../../models/Pagination';
 import SoftwareItem from './SoftwareItem';
 import Software from '../../models/Software';
 import config from '../../config/config';
+//import { callApolloService } from '../../services/ApolloService';
 interface Props {
     value:any
 }
@@ -21,14 +21,23 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
     };
     const [pagination, setPagination] = useState<Pagination>(initialPagination);
     
-    const loadPagination = async(pagination: any) => {
+    const loadPagination = async(pagination: Pagination) => {
         try {
+            let body:any;
             setLoading(true);
             console.log(pagination)
             console.log(props)
             if(pagination.operation ==='FIRST') {
+               body ={"query":
+                `{ getSoftwarePag(key:\"${props?.value}\") { name publisher version operatingSystem } }`};
+                console.log(body.query); 
+                //await callApolloService(body);
                 await SoftwareService.loadSoftwareGrap(props?.value);
             }
+            
+                body ={"query":
+                `{ getSoftwareGraphql(key:\"${props?.value}\" pagination: { page: ${pagination.page} limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { total pagination { page cursor limit } items { name publisher version operatingSystem } } }`};
+            //const data = await callApolloService(body);
             const data = await SoftwareService.loadSoftwareGrapPagination(props?.value, pagination);
             console.log(data)
             

@@ -1,3 +1,4 @@
+import logger from "../config/logger";
 import { RequestHandler } from 'express';
 import assetsService from '../services/assets.service';
 import oauthService from '../services/oauth.service';
@@ -5,19 +6,19 @@ import sitesService from '../services/sites.service';
 
 export const getAssetsGraphqlPag: RequestHandler = async (req: any, res: any) => {
     try {
-        console.log('----queryParams----');
-        console.log(req.query);
-        console.log('---coockies---');
-        console.log(req?.cookies);
-        console.log('---session---');
-        console.log(req?.session);
-        console.log(oauthService.getTokens());
-        console.log(sitesService.getId());
+        logger.info('----queryParams----');
+        logger.info(req.query);
+        logger.info('---coockies---');
+        logger.info(req?.cookies);
+        logger.info('---session---');
+        logger.info(req?.session);
+        logger.info(oauthService.getTokens());
+        logger.info(sitesService.getId());
         const token = req.session.token;
         const idSite = req.session.siteId;
         const result = await assetsService.getGraphqlAssetsPag(oauthService.getTokens().token, sitesService.getId(), req.query);
-        console.log('----- Results ---------');
-        console.log(result);
+        logger.info('----- Results ---------');
+        logger.info(result);
         res.json(result);
     } catch (error) {
         res.json(error);
@@ -25,12 +26,12 @@ export const getAssetsGraphqlPag: RequestHandler = async (req: any, res: any) =>
 };
 
 export const getAssetsGraphql: RequestHandler = async (req: any, res: any) => {
-    console.log(oauthService.getTokens());
-    console.log(sitesService.getId());
+    logger.info(oauthService.getTokens());
+    logger.info(sitesService.getId());
     try {
         const result = await assetsService.getGraphqlAssets(oauthService.getTokens().token, sitesService.getId());
-        console.log('----- results ---------');
-        console.log(result);
+        logger.info('----- results ---------');
+        logger.info(result);
         res.json(result);
     } catch (error) {
         res.json(error);
@@ -40,8 +41,8 @@ export const getAssetsGraphql: RequestHandler = async (req: any, res: any) => {
 export const getAsset : RequestHandler = async (req: any, res: any) => {
     try {
     const result = await assetsService.getAsset(req.params.id);
-    console.log('----- results ---------');
-    console.log(result);
+    logger.info('----- results ---------');
+    logger.info(result);
     res.json(result);
     } catch (error) {
         res.json(error);
@@ -51,8 +52,8 @@ export const getAsset : RequestHandler = async (req: any, res: any) => {
 export const getAssets : RequestHandler = async (req: any, res: any) => {
     try {
         const result = await assetsService.getAssets();
-        console.log('----- results ---------');
-        console.log(result);
+        logger.info('----- results ---------');
+        logger.info(result);
         res.json(result);
     } catch (error) {
         res.json(error);

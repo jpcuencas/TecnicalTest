@@ -24,5 +24,6 @@ export default {
     getAutenticationURL: process.env.getAutenticationURL || 'https://api.lansweeper.com/api/integrations/oauth/token',
     redirect_uri: process.env.redirect_uri || 'http://127.0.0.1:8081/integrations/',
     siteName: process.env.siteName || 'rafa-new-sync-vmware',
+    apolloServerURL: process.env.apolloServerURL || '/graphql',
     enviroment: process.env.enviroment || 'prueba',
 };

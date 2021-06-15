@@ -13,23 +13,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSoftware = exports.getSoftwarePag = exports.getSoftwareGraphql = void 0;
+const logger_1 = __importDefault(require("../config/logger"));
 const oauth_service_1 = __importDefault(require("../services/oauth.service"));
 const sites_service_1 = __importDefault(require("../services/sites.service"));
 const software_service_1 = __importDefault(require("../services/software.service"));
 /** PAGINATION IS NOT WORKING ***
 export const getSoftwareGraphqlPag: RequestHandler = async (req: any, res: any) => {
     try {
-        console.log('------------------------------')
-        console.log(req.query)
-        console.log('------------------------------')
-        console.log(req.session)
-        console.log('------------------------------')
-        console.log(req.cookies)
-        console.log(oauthService.getTokens())
-        console.log(sitesService.getId())
+        logger.info('------------------------------')
+        logger.info(req.query)
+        logger.info('------------------------------')
+        logger.info(req.session)
+        logger.info('------------------------------')
+        logger.info(req.cookies)
+        logger.info(oauthService.getTokens())
+        logger.info(sitesService.getId())
         const result = await softwareService.getGraphqlSoftwarePag(oauthService.getTokens().token, sitesService.getId(), req.params.key, req.query);
-        console.log('----- results ---------')
-        console.log(result)
+        logger.info('----- results ---------')
+        logger.info(result)
         res.json(result);
     } catch (error) {
         res.json(error);
@@ -38,17 +39,17 @@ export const getSoftwareGraphqlPag: RequestHandler = async (req: any, res: any) 
 /**/
 const getSoftwareGraphql = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log('------------------------------');
-        console.log(req.query);
-        console.log('------------------------------');
-        console.log(req.session);
-        console.log('------------------------------');
-        console.log(req.cookies);
-        console.log(oauth_service_1.default.getTokens());
-        console.log(sites_service_1.default.getId());
+        logger_1.default.info('-----queryParams-----');
+        logger_1.default.info(req.query);
+        logger_1.default.info('---coockies---');
+        logger_1.default.info(req === null || req === void 0 ? void 0 : req.cookies);
+        logger_1.default.info('---session---');
+        logger_1.default.info(req === null || req === void 0 ? void 0 : req.session);
+        logger_1.default.info(oauth_service_1.default.getTokens());
+        logger_1.default.info(sites_service_1.default.getId());
         const result = yield software_service_1.default.getGraphqlSoftware(oauth_service_1.default.getTokens().token, sites_service_1.default.getId(), req.params.key);
-        console.log('----- results ---------');
-        console.log(result);
+        logger_1.default.info('----- results ---------');
+        logger_1.default.info(result);
         res.json(result);
     }
     catch (error) {
@@ -58,12 +59,12 @@ const getSoftwareGraphql = (req, res) => __awaiter(void 0, void 0, void 0, funct
 exports.getSoftwareGraphql = getSoftwareGraphql;
 const getSoftwarePag = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log('------------------------------');
-        console.log(req.query);
-        console.log('------------------------------');
+        logger_1.default.info('------------------------------');
+        logger_1.default.info(req.query);
+        logger_1.default.info('------------------------------');
         const result = yield software_service_1.default.getSoftwarePag(req.params.key, req.query);
-        console.log('----- results ---------');
-        console.log(result);
+        logger_1.default.info('----- results -----');
+        logger_1.default.info(result);
         res.json(result);
     }
     catch (error) {
@@ -74,8 +75,8 @@ exports.getSoftwarePag = getSoftwarePag;
 const getSoftware = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield software_service_1.default.getSoftware();
-        console.log('----- results ---------');
-        console.log(result);
+        logger_1.default.info('----- results ---------');
+        logger_1.default.info(result);
         res.json(result);
     }
     catch (error) {

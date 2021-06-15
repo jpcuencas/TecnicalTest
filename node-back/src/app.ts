@@ -5,9 +5,13 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import config from './config/config';
 import assetsRoutes from './routes/assets.routes';
+import { ApolloServer } from 'apollo-server-express';
+import resolvers from './graphql/resolvers';
+import typeDefs from './graphql/schema';
 // import { graphqlHTTP } from "express-graphql";
 // import session from 'express-session';
 
+const serverApollo = new ApolloServer({ typeDefs, resolvers });
 console.log(config);
 
 const app = express();
@@ -56,5 +60,5 @@ app.get('/read-cookie', (req:any, res:any) => {
     res.clearCookie(req.query.name).end();
   });
 
-export default app;
+export {app, serverApollo};
 

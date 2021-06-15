@@ -15,9 +15,7 @@ export const loadAssets = async () => {
 
 export const loadAssetsGrapPagination = async (pagination: Pagination) => {
     let res: any;
-    //let cookies: any;
     try {
-        //cookies = await axios.get(`${config.nodeUrl}/read-cookie`);
         res = await axios.get(`${config.nodeUrl}/assetsGrapPag`, {
         params: pagination
       });

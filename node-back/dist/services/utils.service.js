@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const logger_1 = __importDefault(require("../config/logger"));
 const axios_1 = __importDefault(require("axios"));
 const config_1 = __importDefault(require("../config/config"));
 const oauth_service_1 = __importDefault(require("./oauth.service"));
@@ -26,15 +27,15 @@ const getQueryGraphql = (token, graphql) => __awaiter(void 0, void 0, void 0, fu
                 'Authorization': 'Bearer ' + token
             }
         });
-        console.log('response');
-        console.log(res);
+        logger_1.default.info('response');
+        logger_1.default.info(res);
     }
     catch (error) {
-        console.error(error);
+        logger_1.default.error(error);
         if (error.status === 401 && !check) {
             yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
             check = true;
-            let result = yield getQueryGraphql(token, graphql);
+            let result = yield getQueryGraphql(oauth_service_1.default.getTokens().token, graphql);
             check = false;
             return result;
         }

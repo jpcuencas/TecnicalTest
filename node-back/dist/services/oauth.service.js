@@ -36,6 +36,12 @@ exports.default = {
             refreshToken: refreshtoken
         };
     },
+    setTokens: (tokens) => {
+        return {
+            token: tokens.token,
+            refreshToken: tokens.refreshtoken
+        };
+    },
     getCode: () => __awaiter(void 0, void 0, void 0, function* () {
         let res;
         try {

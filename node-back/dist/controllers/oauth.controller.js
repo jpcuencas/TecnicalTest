@@ -48,11 +48,13 @@ const getRedirecct = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.getRedirecct = getRedirecct;
 const getRefresh = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _f, _g;
+    var _f, _g, _h;
+    console.log('---coockies---');
     console.log(req === null || req === void 0 ? void 0 : req.cookies);
+    console.log('---session---');
     console.log(req === null || req === void 0 ? void 0 : req.session);
-    if (req.session.refreshToken) {
-        const resp = yield oauth_service_1.default.getRefresh(req.session.refreshToken);
+    if (oauth_service_1.default.getTokens().refreshToken) {
+        const resp = yield oauth_service_1.default.getRefresh(oauth_service_1.default.getTokens().refreshToken);
         console.log(resp.data);
         console.log(resp.data.access_token);
         /**/
@@ -63,7 +65,11 @@ const getRefresh = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             });
         }
         /**/
-        req.session.token = (_g = resp === null || resp === void 0 ? void 0 : resp.data) === null || _g === void 0 ? void 0 : _g.access_token;
+        oauth_service_1.default.setTokens({
+            token: (_g = resp === null || resp === void 0 ? void 0 : resp.data) === null || _g === void 0 ? void 0 : _g.access_token,
+            refreshToken: oauth_service_1.default.getTokens().refreshToken
+        });
+        req.session.token = (_h = resp === null || resp === void 0 ? void 0 : resp.data) === null || _h === void 0 ? void 0 : _h.access_token;
         res.end();
     }
     else {

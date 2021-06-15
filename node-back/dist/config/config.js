@@ -34,7 +34,7 @@ switch (process.env.NODE_ENV) {
 }
 dotenv.config({ path: pathFile });
 exports.default = {
-    PORT: process.env.PORT || 3001,
+    PORT: process.env.PORT || 8081,
     client_id: process.env.client_id || '5da0b8b52e8eb7d5324b4818ae09fa78',
     client_secret: process.env.client_secret || 'm3GGGwsvivbPIpyKtKpcDHvG288rT3lA_jNWr7J5snOocz59sI6WVcY4ywQSCZHx',
     code: process.env.code || '',
@@ -43,6 +43,7 @@ exports.default = {
     getAutenticationURL: process.env.getAutenticationURL || 'https://api.lansweeper.com/api/integrations/oauth/token',
     redirect_uri: process.env.redirect_uri || 'http://127.0.0.1:8081/integrations/',
     siteName: process.env.siteName || 'rafa-new-sync-vmware',
+    apolloServerURL: process.env.apolloServerURL || '/graphql',
     enviroment: process.env.enviroment || 'prueba',
 };
 //# sourceMappingURL=config.js.map

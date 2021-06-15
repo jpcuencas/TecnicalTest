@@ -1,3 +1,4 @@
+import logger from "../config/logger";
 import axios from 'axios';
 import config from '../config/config';
 import oauthService from './oauth.service';
@@ -12,10 +13,10 @@ let check = false;
             'Authorization': 'Bearer ' + token
           }
         });
-        console.log('response')
-        console.log(res)
+        logger.info('response')
+        logger.info(res)
     } catch (error) {
-        console.error(error);
+        logger.error(error);
         if(error.status === 401 && ! check) {
             await oauthService.getRefresh(oauthService.getTokens().refreshToken);
             check = true;

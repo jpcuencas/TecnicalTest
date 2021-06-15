@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as AssetsService from '../../services/AssetsService';
 import Asset from '../../models/Asset/Asset';
-import Software from '../../models/Software';
 import SoftwareList from '../assetSoftware/SoftwareList';
+//import { callApolloService } from '../../services/ApolloService';
+
 
 
 const AssetDetails = (props:any) => {
@@ -17,6 +18,10 @@ const AssetDetails = (props:any) => {
     
     const loadAssetDetails = async(id: string) => {
         try {
+            const body ={"query":
+            `{ getAsset(id:\"${id}\") { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } }`};
+            console.log(body.query);
+            //const element = await callApolloService(body);
             const element = await AssetsService.loadAsset(id);
             setAsset(element);
         } catch(error) {

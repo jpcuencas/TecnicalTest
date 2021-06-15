@@ -3,8 +3,8 @@ import * as AssetsService from '../../services/AssetsService';
 import Asset from '../../models/Asset/Asset';
 import Pagination from '../../models/Pagination';
 import AssetItem from './AssetsItem';
-import { loadAssetsGrapPagination } from '../../services/AssetsService';
 import config from '../../config/config';
+//import { callApolloService } from '../../services/ApolloService';
 
 const AssetsList = () => {
     const initialAssets: Asset[] = [];
@@ -20,20 +20,23 @@ const AssetsList = () => {
     };
     const [pagination, setPagination] = useState<Pagination>(initialPagination);
     
-    const loadPagination = async(pagination: any) => {
+    const loadPagination = async(pagination: Pagination) => {
         try {
             setLoading(true);
-            console.log('works');
             console.log(pagination)
+            const body = { "query":
+            `{ getAssetsGraphql ( pagination: { page: ${pagination.page} limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { total pagination { cursor } items { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } } }` };
+            console.log(body.query)
+            //const data = await callApolloService(body);
             const data = await AssetsService.loadAssetsGrapPagination(pagination);
             console.log(data)
             
             let pag: Pagination ={...pagination}
             pag.page = pagination.page !==0? pagination.page: 1;
-            pag.cursor = data?.data?.site?.assetResources?.pagination?.current;
-            pag.total = data?.data?.site?.assetResources?.total;
+            pag.cursor = data?.assetResources?.pagination?.current;
+            pag.total = data?.assetResources?.total;
             setPagination(pag);
-            setAssets(data?.data?.site?.assetResources?.items);
+            setAssets(data?.assetResources?.items);
         } catch(error) {
             console.error(error);
         }
@@ -53,7 +56,7 @@ const AssetsList = () => {
         setPagination(pag);
         loadPagination(pag);
     }
-/**/
+    
     useEffect( () => {
         loadPagination(pagination);
     }, []);
@@ -104,5 +107,5 @@ const AssetsList = () => {
         return <p>Loading...</p>;
     }
 }
-//  <AssetsItem element={assets[0]} />
+
 export default AssetsList;
