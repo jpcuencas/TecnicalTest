@@ -69,7 +69,7 @@
     "clean-coverage": "rimraf coverage & rimraf ./coverage.log",
     "clean-dependences": "rimraf node_modules",
     "clean-logs": "rimraf logs",
-    "clean": "npm run clean-build & npm run clean-coverage & npm run clean-lint & npm run clean-logs & npm run clean-dependences"
+    "clean-all": "npm run clean-build & npm run clean-coverage & npm run clean-lint & npm run clean-logs & npm run clean-dependences"
   },
   "jest": {
     "preset": "ts-jest",
