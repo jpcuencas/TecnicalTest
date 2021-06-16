@@ -122,9 +122,11 @@ const SoftwareList = (props:any)=> {
       </>
     :
     (!isLoading )?
-     <p>Has no elements</p>
+     <p><i className="fas fa-info"></i> <h5>Has no elements</h5></p>
      :
-     <p>Loading...</p>
+      <div className="spinner-border text-secondary" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
     }
     </>
     );

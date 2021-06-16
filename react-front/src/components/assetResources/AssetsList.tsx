@@ -42,7 +42,7 @@ const AssetsList = () => {
             console.info(data)
             
             let pag: Pagination ={...pagination}
-            pag.page = parseInt(pagination.page) !==0? pagination.page : '1';
+            pag.page = parseInt(pagination.page) !==0 ? pagination.page : '1';
             pag.cursor = data?.data?.getGraphqlAssetsPag?.assetResources?.pagination?.current;
             pag.total = data?.data?.getGraphqlAssetsPag?.assetResources?.total;
             //pag.cursor = data?.assetResources?.pagination?.current;
@@ -58,17 +58,24 @@ const AssetsList = () => {
     const setPageNext = (page: number) => {
         let pag: Pagination ={...pagination}
         pag.page = page.toString();
-        pag.operation='NEXT'
+        pag.operation = 'NEXT';
         setPagination(pag);
         loadPagination(pag);
     }
     const setPagePrev = (page: number) => {
         let pag: Pagination ={...pagination}
         pag.page = page.toString();
-        pag.operation='PREV'
+        pag.operation = 'PREV';
         setPagination(pag);
         loadPagination(pag);
     }
+
+    const changeItemsSize = (event:any) =>{
+        console.info(event.target.value);
+        let pag: Pagination ={...pagination}
+        pag.limit=event.target.value;
+        setPagination(pag);
+    } 
     
     useEffect( () => {
         loadPagination(pagination);
@@ -88,12 +95,20 @@ const AssetsList = () => {
          </li>
            <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link text-dark" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next <i className="fas fa-chevron-right"></i></a></li>
          </ul>
-         <p>Page: {pagination.page}</p>
-       </nav>
-       {
+         <span className="float-left">Page: {pagination.page}</span>
+        {
        (pagination.total)?
-       <p>Total: {pagination.total}</p>:<p></p>
+       <span className="float-right ml-5">Total: {pagination.total}</span>:<span></span>
         }
+       <span className="float-right">
+         <span>Display: </span>
+         <select id="num-items" className="form-select" onChange={(e)=>{ changeItemsSize(e) }}>
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+        </select>
+       </span>
+       </nav>
        <table className="table">
         <thead>
           <tr>
@@ -102,7 +117,7 @@ const AssetsList = () => {
             <th scope="col">Type</th>
             <th scope="col">Model</th>
             <th scope="col">Manufacturer</th>
-            <th scope="col">#</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -116,9 +131,11 @@ const AssetsList = () => {
       </>
       );
     } else if(!isLoading ) {
-        return <p>Has no elements</p>;
+        return <p> <h5><i className="fas fa-info"></i> Has no elements</h5> </p>;
     } else {
-        return <p>Loading...</p>;
+        return <div className="spinner-border text-secondary" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>;
     }
 }
 

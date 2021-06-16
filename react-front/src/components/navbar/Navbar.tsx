@@ -65,7 +65,7 @@ const Navbar = () => {
       </nav>
     )
 }
-// <i className="fas fa-chevron-left"></i>
+// <i className="fas fa-chevron-down"></i>
 
 export default Navbar
 

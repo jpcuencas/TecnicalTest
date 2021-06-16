@@ -41,6 +41,11 @@ const AssetDetails = (props:any) => {
     if(asset) {
        return (
        <>
+       <div className="card">
+           <div className="card-header">
+               <h4>Identifier</h4>
+           </div>
+       </div>
        <div className="card-body">
        <table className="table">
             <tbody>
@@ -59,8 +64,8 @@ const AssetDetails = (props:any) => {
         <div className="card">
           <div className="card-header" id="headingOne">
             <h5 className="mb-0">
-              <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                Basic Info
+              <button className="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+               <h5><i className="fas fa-chevron-right"></i> Basic Info</h5>
               </button>
             </h5>
           </div>
@@ -85,8 +90,8 @@ const AssetDetails = (props:any) => {
         <div className="card">
         <div className="card-header" id="headingTwo">
           <h5 className="mb-0">
-            <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Custom
+            <button className="btn btn-link collapsed text-dark" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+             <h5><i className="fas fa-chevron-right"></i> Custom</h5>
             </button>
           </h5>
         </div>
@@ -111,8 +116,8 @@ const AssetDetails = (props:any) => {
         <div className="card">
         <div className="card-header" id="headingThree">
           <h5 className="mb-0">
-            <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Software In Asset
+            <button className="btn btn-link collapsed text-dark" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+             <h5><i className="fas fa-chevron-right"></i> Software In Asset</h5>
             </button>
           </h5>
         </div>
@@ -128,7 +133,7 @@ const AssetDetails = (props:any) => {
       </>
       );
     } else {
-        return <p>Has no element</p>;
+        return <p> <h5><i className="fas fa-info"></i> Has no element </h5></p>;
     }
     //    <SoftwareList value={asset?.key}/>
 }
