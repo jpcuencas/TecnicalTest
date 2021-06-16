@@ -34,7 +34,7 @@ const getGraphqlAssets = async (token: string, idSite:string) => {
             assets = res?.data?.data?.site?.assetResources?.items;
         } catch (error) {
             console.error(error);
-            if(error.status === 401 && ! check) {
+            if((error.status === 401 || error.status === 400) && ! check) {
                 await oauthService.getRefresh(oauthService.getTokens().refreshToken);
                 check = true;
                 const result:any = await getGraphqlAssets(oauthService.getTokens().token, idSite);
@@ -73,7 +73,7 @@ const getGraphqlAssetsPag = async (token: string, idSite: string, pagination:Pag
         } catch (error) {
             console.error(error);
             console.error(error?.response);
-            if(error.status === 401 && ! check) {
+            if((error.status === 401 || error.status === 400) && ! check) {
                 await oauthService.getRefresh(oauthService.getTokens().refreshToken);
                 check = true;
                 const result:any = await getGraphqlAssetsPag(oauthService.getTokens().token, idSite, pagination);

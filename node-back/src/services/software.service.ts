@@ -69,7 +69,7 @@ const getGraphqlSoftware = async (token: string, idSite: string, key: string) =>
             software = res?.data?.data?.site?.softwares?.items;
         } catch (error) {
             console.error(error);
-            if(error.status === 401 && ! check) {
+            if((error.status === 401 || error.status === 400) && ! check) {
                 await oauthService.getRefresh(oauthService.getTokens().refreshToken);
                 check = true;
                 const result:any = await getGraphqlSoftware(oauthService.getTokens().token, idSite, key);
