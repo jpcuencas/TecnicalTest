@@ -36,7 +36,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"client_id\": \"5da0b8b52e8eb7d5324b4818ae09fa78\",\r\n  \"client_secret\": \"m3GGGwsvivbPIpyKtKpcDHvG288rT3lA_jNWr7J5snOocz59sI6WVcY4ywQSCZHx\",\r\n  \"grant_type\": \"authorization_code\",\r\n  \"code\":\"b06b393df62b6f73\",\r\n  \"redirect_uri\": \"http://127.0.0.1:8081/integrations/\"\r\n}",
+					"raw": "{\r\n  \"client_id\": \"5da0b8b52e8eb7d5324b4818ae09fa78\",\r\n  \"client_secret\": \"m3GGGwsvivbPIpyKtKpcDHvG288rT3lA_jNWr7J5snOocz59sI6WVcY4ywQSCZHx\",\r\n  \"grant_type\": \"authorization_code\",\r\n  \"code\":\"09dedb57da101b4f\",\r\n  \"redirect_uri\": \"http://127.0.0.1:8081/integrations/\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -69,7 +69,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MzE2NzEsImlhdCI6MTYyMzQ0NTI3MSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.cnCjYuLhdNpYDUyCJmrskAaTBnA51W0ekhrMJbxa5wzFKVCsKVA_XUjFCHOKIJx3FSlaSVPGz9UuuqlgcjENrXpiD5MF9ZGUfk2hxtYnakIO-Zj09VrvWetItu4FVwGI7QfEx6BskM1Y86ttUU8QYOhpTY5hrS2z1zVryog_urllP_G7B1VRUWppgtDXgxrtej0W-0tpRK9RmnkzYzp6BIsezppVfwPmNBmSXFvrLbWxPXCYNdRLMPHbX0_aMyILQiRazt0T17G3YU0FWSoLitpg4DDibnYt45M1yYl4JwDgi4GDsP8PV5XkPJX2mWAnwGCd3SBR2tZv5zJKAljCNL1zfmtMdW-QIb0pz6w7eBtaNPqQpdhl41Hgxui11ygn_HkSHIX4IoBG9qCffV6ha1xjNDybzA2TI36GtqmEiEW0gdQAUltaZ63lSEbWtt9xKVRNylG5_q6e52UEEaNrQCNY_-hh62JyOJC74DGcgy999NbPToS7zz8j8nTS8rGGGARoKHeHdOHkhv2QA_JUhjE0SFXvDGxmb8jRudAhrT8_163HCm5OpN62ccGnTO6qYZyt0H4nsViB9ra135-qM-PSDsXBlb5K7-YyZVhk23rglLsG7eITF_KaVOhupvyB4Rd9i70bBurEdieGa7CAUXDkFp-6t5YptpjYmmzmbLM",
 							"type": "string"
 						}
 					]
@@ -115,7 +115,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MzE2NzEsImlhdCI6MTYyMzQ0NTI3MSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.cnCjYuLhdNpYDUyCJmrskAaTBnA51W0ekhrMJbxa5wzFKVCsKVA_XUjFCHOKIJx3FSlaSVPGz9UuuqlgcjENrXpiD5MF9ZGUfk2hxtYnakIO-Zj09VrvWetItu4FVwGI7QfEx6BskM1Y86ttUU8QYOhpTY5hrS2z1zVryog_urllP_G7B1VRUWppgtDXgxrtej0W-0tpRK9RmnkzYzp6BIsezppVfwPmNBmSXFvrLbWxPXCYNdRLMPHbX0_aMyILQiRazt0T17G3YU0FWSoLitpg4DDibnYt45M1yYl4JwDgi4GDsP8PV5XkPJX2mWAnwGCd3SBR2tZv5zJKAljCNL1zfmtMdW-QIb0pz6w7eBtaNPqQpdhl41Hgxui11ygn_HkSHIX4IoBG9qCffV6ha1xjNDybzA2TI36GtqmEiEW0gdQAUltaZ63lSEbWtt9xKVRNylG5_q6e52UEEaNrQCNY_-hh62JyOJC74DGcgy999NbPToS7zz8j8nTS8rGGGARoKHeHdOHkhv2QA_JUhjE0SFXvDGxmb8jRudAhrT8_163HCm5OpN62ccGnTO6qYZyt0H4nsViB9ra135-qM-PSDsXBlb5K7-YyZVhk23rglLsG7eITF_KaVOhupvyB4Rd9i70bBurEdieGa7CAUXDkFp-6t5YptpjYmmzmbLM",
 							"type": "string"
 						}
 					]
@@ -125,7 +125,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\",\r\n               \"resourceGroup.key\"]\r\n    ) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\",\r\n               \"resourceGroup.assetKey\",\r\n               \"key\"]\r\n    ) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -164,7 +164,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: FIRST },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: FIRST },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\",\r\n               \"resourceGroup.assetKey\",\r\n               \"key\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -203,7 +203,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: NEXT },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"60a78cb90aa271a8743e3b60\"\r\n        limit: 100,\r\n        page: NEXT },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\",\r\n               \"resourceGroup.assetKey\",\r\n               \"key\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -242,7 +242,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"6076b38a96d963c10a5ea892\"\r\n        limit: 100,\r\n        page: PREV },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
+						"query": "query getAssetResources {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    assetResources(\r\n      pagination:\r\n      { cursor: \"60a78cb90aa271a8743e3c9d\"\r\n        limit: 100,\r\n        page: PREV },\r\n      fields: [\"assetBasicInfo.name\",\r\n               \"assetBasicInfo.type\",\r\n               \"assetCustom.model\",\r\n               \"assetCustom.manufacturer\",\r\n               \"resourceGroup.assetKey\",\r\n               \"key\"]\r\n    ) {\r\n      total\r\n      pagination {\r\n        limit\r\n        current\r\n        next\r\n        page \r\n      }\r\n      items\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -271,7 +271,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjgxMTJhYzU5ODRkYTY1Nzg5ZGQ0ZCJ9.eyJhenAiOiI4MTI1ZGJjNDBmYjMxY2Y0OWRlZmYyYTA0MzE1NTgxYSIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjMxNTk0MTksImlhdCI6MTYyMzA3MzAxOSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.fAnjMk-OFkmboYDeBgeSrhLiW2GJQrKVE4XItEoWPMXMQLBJYNftlaoBxsLPflXOtt8MUMSr_B1bAYua1RLGhDhO2mA1X5PMN9WVZfRiQd3hbiwqTCFvv3k7ny1TRHLOSbguMIEN09MZl-vetEozM2IZ5_JaXt_s9sCVp5R6HEqDXsvuM9OEQeP7dl5HWhYQaLsmm7rPJUKsAs8B8f1PDAGUxqMJcZW5FK41Oe7aO13Fp8hqXrIo8EDkaWsFbpeOiws4meNhcTe_9LmaaLtxRgefaLcPEvrOEsAUO2qTP96qgDada5NIBNqBQeFU0Uw1p3TXr5dQwUrw8-L1p5HRUZIiuFxpOAFa3henVzEgKJ3KIqgt3yxu4ibsNuHwCGTRG2_fZ1x9LvXxZ54f9BqXH5FaGJF6HQyaTv6FIKtrJKwaeqwvcH66ViyFsO1H3yXCnkv8SfpTvf7vUXwX_Nu8FkvztrMmxEn-Xp8--2A-9bi1QGoE3zp8iSUY_H2iZkW7pc13MeKZAI0YBU-6LD5pClo9apLc-dAerDj8P4wkI2i0ZZhd_P9HaS1yXBRUpx82Jaqwnha-kjkny9kSXAHrjDhEruIZ9WtGjynNmQT8ZpYqvv7O45qjE8uAsxlRZGaObod6RASz3gAwNOQYSSLX46Qp1I2gIeqXVHXXtY1lYwQ",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM1MTU1MzgsImlhdCI6MTYyMzQyOTEzOCwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.dJJrnkpa3LkB4Pw9wfAmi9VlFtKCZXM5iotKKOBl5U972LoXqKwK71fTdyVpZb7RT6siFNRIGVWd8Tueii1IqNZksMm6N62bWY-ox7WmiYmxsMgVvtkeV2R3jIBrf1BHb62m4Aem0rqQYXVLwYhxxgSbb2vVDBwpYKJl2JPzJ9dBIuRHaQU4H_0AOq2H0pqBZ-uBjOIWhhphO14PgqxME4eyin2MyojLaibXJI-C65Kc9tvSXWLUbHwOl0azhA6O3m7vCPylOB6J7rzDx0IdWt6RhgEWfm2d_0imnhly-l0ld6CyHdMNBvBhQxvDDU2dbw5j1pNsg4u_h2Hw9IvFGlE1YKKD5WcbggHo69fOyuaSDXNJqodyA5gKEF1FNZmEKkJq8YuPqSDSMTdRYGTVzBm5xsmnjYJ5G-_uRPMQNKo1meIWV6mtqC8hN9JbXw07CfwfQWbt-pSGi3Q7KD73AD5F-nWGxLxAt_Jlad93Yk4arcACTMmS7NdGv-gNnzFUzEWG8zYOBgc9O3YKfwoUNhr_2LbHwHS2BgIbOaNs-9RKVo6KG8LUJJCif9_y_c9gyCyHeTdz-DvdAhRpbsY7luVPuy4GQCB99OsgWn9TDToh5YQPANGv_ZSLW89IKbJXyslkUmnBUMwHqYc-v_viooDgYIsnZsLnjmHu3jgJWsQ",
 							"type": "string"
 						}
 					]
@@ -281,7 +281,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getSoftwaresByAssetKey {\r\n  site(id: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\") {\r\n    softwares(key: \"MTAzNzczLUFjRlMWYyLWM0YmYtNGNmNy1hM2U4LWzc2V0LTU1NQzZDg3ZWYxZmQ2Mg==\"\r\n    orderDirection: DESC\r\n    orderBy: \"softwares.release\"\r\n    fields: [ \"softwares.installDate\",\r\n              \"softwares.lastChanged\",\r\n              \"softwares.currentUser\",\r\n              \"softwares.msi\",\r\n              \"softwares.name\",\r\n              \"softwares.publisher\",\r\n              \"softwares.operatingSystem\",\r\n              \"softwares.version\",\r\n              \"softwares.release\",\r\n              \"softwares.architecture\",\r\n              \"softwares.status\",\r\n              \"softwares.error\",]) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
+						"query": "query getSoftwaresByAssetKey {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    softwares(key: \"MzktQXNzZXQtOTc0YzVmMjctNzlmNi00NGQyLWJiNDktYjdjYjgxOWYxOTA0\"\r\n    fields: [ \"softwares.installDate\",\r\n              \"softwares.lastChanged\",\r\n              \"softwares.currentUser\",\r\n              \"softwares.msi\",\r\n              \"softwares.name\",\r\n              \"softwares.publisher\",\r\n              \"softwares.operatingSystem\",\r\n              \"softwares.version\",\r\n              \"softwares.release\",\r\n              \"softwares.architecture\",\r\n              \"softwares.status\",\r\n              \"softwares.error\",]) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -310,7 +310,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjgxMTJhYzU5ODRkYTY1Nzg5ZGQ0ZCJ9.eyJhenAiOiI4MTI1ZGJjNDBmYjMxY2Y0OWRlZmYyYTA0MzE1NTgxYSIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjMxNTk0MTksImlhdCI6MTYyMzA3MzAxOSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.fAnjMk-OFkmboYDeBgeSrhLiW2GJQrKVE4XItEoWPMXMQLBJYNftlaoBxsLPflXOtt8MUMSr_B1bAYua1RLGhDhO2mA1X5PMN9WVZfRiQd3hbiwqTCFvv3k7ny1TRHLOSbguMIEN09MZl-vetEozM2IZ5_JaXt_s9sCVp5R6HEqDXsvuM9OEQeP7dl5HWhYQaLsmm7rPJUKsAs8B8f1PDAGUxqMJcZW5FK41Oe7aO13Fp8hqXrIo8EDkaWsFbpeOiws4meNhcTe_9LmaaLtxRgefaLcPEvrOEsAUO2qTP96qgDada5NIBNqBQeFU0Uw1p3TXr5dQwUrw8-L1p5HRUZIiuFxpOAFa3henVzEgKJ3KIqgt3yxu4ibsNuHwCGTRG2_fZ1x9LvXxZ54f9BqXH5FaGJF6HQyaTv6FIKtrJKwaeqwvcH66ViyFsO1H3yXCnkv8SfpTvf7vUXwX_Nu8FkvztrMmxEn-Xp8--2A-9bi1QGoE3zp8iSUY_H2iZkW7pc13MeKZAI0YBU-6LD5pClo9apLc-dAerDj8P4wkI2i0ZZhd_P9HaS1yXBRUpx82Jaqwnha-kjkny9kSXAHrjDhEruIZ9WtGjynNmQT8ZpYqvv7O45qjE8uAsxlRZGaObod6RASz3gAwNOQYSSLX46Qp1I2gIeqXVHXXtY1lYwQ",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM2MTI0MzEsImlhdCI6MTYyMzUyNjAzMSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.d7mbC-U2KB4D6Lmsv7b8gka_eYAfa36BJtTmMBLzL-LMLnwcrV9ncbolvnPQ4AoyO2y04r9kHpV0CcWJj1AxKqbB7-AHZKJGVIhe3r87t2kkFJZKz7HQiCUNv1DjVMNg4DDK1qQDKd0Tvt2AZqEDQXI2H3yll4Dla3KXYLhyblmVPytqY8oYZ0P4DduySzXfI3JuOUjYKkvtItsTzxcQDNA6dYSWDdLlkbajKyb7_4SVyJJsXUCupLOMJgnjI9-a3XZyb1tXplqTNHoxn79zSS8uZQ_zULeqCGtE3XcwUfuTCkGV72yWQ8n857rj1NgeyXbzmBunAYaRULzZLW121Tlq3KSmIgJeYjV3JCEBh2SyFVRElGDRoDMm-8-ev9NtRSv7twzwwV9ad6o4LQnL8Nsp9Ym6d7xocKJcYv_ZCBSZe6PHa4Y-aPf3t0C0RorYGIOe6hmhT1bSkIDGmRNIRKlj1zcG4Qk5YYxgb1CmH9me_SHrxSG_TFbwEsXWeKd198oLbz6Zi1w6xBbzO-2ihaJI4CDW354L-IHplxJ2M86Gi3Pl3jMLRd5jij-93NlfW4ci8MvlusVatbxC8AI5jsG0ru7Ys6uARtOzR8icm9hh5KX4k6J7iFT0LBjusjGtiiM63nJDcyCw1DHooTwIuqphfPF__-vMbSxcnyFXGBw",
 							"type": "string"
 						}
 					]
@@ -320,7 +320,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query getSoftwaresByAssetKey {\r\n  site(id: \"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\") {\r\n    softwares(key: \"MTAzNzczLUFjRlMWYyLWM0YmYtNGNmNy1hM2U4LWzc2V0LTU1NQzZDg3ZWYxZmQ2Mg==\"\r\n    orderDirection: DESC\r\n    orderBy: \"softwares.release\"\r\n    fields: [ \"softwares.installDate\",\r\n              \"softwares.lastChanged\",\r\n              \"softwares.currentUser\",\r\n              \"softwares.msi\",\r\n              \"softwares.name\",\r\n              \"softwares.publisher\",\r\n              \"softwares.operatingSystem\",\r\n              \"softwares.version\",\r\n              \"softwares.release\",\r\n              \"softwares.architecture\",\r\n              \"softwares.status\",\r\n              \"softwares.error\",]) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
+						"query": "query getSoftwaresByAssetKey {\r\n  site(id: \"6da03f27-266c-4fad-a373-190168aab403\") {\r\n    softwares(key: \"MTAzNzczLUFjRlMWYyLWM0YmYtNGNmNy1hM2U4LWzc2V0LTU1NQzZDg3ZWYxZmQ2Mg==\"\r\n    pagination:\r\n      { limit: 100,\r\n        page: FIRST },\r\n    orderBy: \"softwares.release\"\r\n    fields: [ \"softwares.installDate\",\r\n              \"softwares.lastChanged\",\r\n              \"softwares.currentUser\",\r\n              \"softwares.msi\",\r\n              \"softwares.name\",\r\n              \"softwares.publisher\",\r\n              \"softwares.operatingSystem\",\r\n              \"softwares.version\",\r\n              \"softwares.release\",\r\n              \"softwares.architecture\",\r\n              \"softwares.status\",\r\n              \"softwares.error\",]) {\r\n      total\r\n      items\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -376,19 +376,59 @@
 		{
 			"name": "Api Pagination",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://app.lansweeper.com/integrations/",
-					"protocol": "https",
+					"raw": "http://localhost:8081/assetsGrap?page=0&limit=20",
+					"protocol": "http",
 					"host": [
-						"app",
-						"lansweeper",
-						"com"
+						"localhost"
 					],
+					"port": "8081",
 					"path": [
-						"integrations",
-						""
+						"assetsGrap"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetServerAssets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjI2MDUyODlhOGQ2N2I0ZmVlZWQ4NSJ9.eyJhenAiOiI1ZGEwYjhiNTJlOGViN2Q1MzI0YjQ4MThhZTA5ZmE3OCIsInNjb3BlIjoib2ZmbGluZV9hY2Nlc3MiLCJleHAiOjE2MjM2MTI0MzEsImlhdCI6MTYyMzUyNjAzMSwiYXVkIjoiaHR0cHM6Ly9hcGkubGFuc3dlZXBlci5jb20iLCJpc3MiOiJodHRwczovL2lkLmxhbnN3ZWVwZXIuY29tIiwic3ViIjoiYXV0aDB8NjBiZGY5MGU4ZjQxOTgwMDY4MjE2MjJlIn0.d7mbC-U2KB4D6Lmsv7b8gka_eYAfa36BJtTmMBLzL-LMLnwcrV9ncbolvnPQ4AoyO2y04r9kHpV0CcWJj1AxKqbB7-AHZKJGVIhe3r87t2kkFJZKz7HQiCUNv1DjVMNg4DDK1qQDKd0Tvt2AZqEDQXI2H3yll4Dla3KXYLhyblmVPytqY8oYZ0P4DduySzXfI3JuOUjYKkvtItsTzxcQDNA6dYSWDdLlkbajKyb7_4SVyJJsXUCupLOMJgnjI9-a3XZyb1tXplqTNHoxn79zSS8uZQ_zULeqCGtE3XcwUfuTCkGV72yWQ8n857rj1NgeyXbzmBunAYaRULzZLW121Tlq3KSmIgJeYjV3JCEBh2SyFVRElGDRoDMm-8-ev9NtRSv7twzwwV9ad6o4LQnL8Nsp9Ym6d7xocKJcYv_ZCBSZe6PHa4Y-aPf3t0C0RorYGIOe6hmhT1bSkIDGmRNIRKlj1zcG4Qk5YYxgb1CmH9me_SHrxSG_TFbwEsXWeKd198oLbz6Zi1w6xBbzO-2ihaJI4CDW354L-IHplxJ2M86Gi3Pl3jMLRd5jij-93NlfW4ci8MvlusVatbxC8AI5jsG0ru7Ys6uARtOzR8icm9hh5KX4k6J7iFT0LBjusjGtiiM63nJDcyCw1DHooTwIuqphfPF__-vMbSxcnyFXGBw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/assets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"assets"
 					]
 				}
 			},

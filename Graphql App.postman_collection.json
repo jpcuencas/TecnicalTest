@@ -39,7 +39,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\r\n  getGraphqlAssetsPag (\r\n      pagination: {\r\n            page: 0\r\n            limit: 10\r\n            operation: \"FIRST\"\r\n        }){\r\n        total\r\n        pagination {\r\n            cursor\r\n        }\r\n        items {\r\n        _id\r\n        key\r\n        assetBasicInfo {\r\n            name\r\n            type\r\n        }\r\n        assetCustom {\r\n            model\r\n            manufacturer\r\n        }\r\n        resourceGroup {\r\n            assetKey\r\n        }\r\n    }\r\n  }  \r\n}",
+						"query": "{\r\n    getGraphqlAssetsPag (\r\n    pagination: {\r\n        limit: 10\r\n        operation: \"NEXT\"\r\n    })\r\n    {\r\n        assetResources{\r\n            total\r\n            pagination {\r\n                limit\r\n                current\r\n                next\r\n                page\r\n            }\r\n            items {\r\n                _id\r\n                key\r\n                assetBasicInfo {\r\n                    name\r\n                    type\r\n                }\r\n                assetCustom {\r\n                    model\r\n                    manufacturer\r\n                }\r\n                resourceGroup {\r\n                    assetKey\r\n                }\r\n            }\r\n        }\r\n    }  \r\n}",
 						"variables": ""
 					}
 				},
@@ -91,17 +91,20 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\r\n  getAsset(id:\"60a78bda0aa271a8743784d0\") {\r\n    _id\r\n    key\r\n    assetBasicInfo {\r\n        name\r\n        type\r\n    }\r\n    assetCustom {\r\n        model\r\n        manufacturer\r\n    }\r\n    resourceGroup {\r\n        assetKey\r\n    }\r\n  }\r\n}",
+						"query": "{\r\n  getAsset(id:\"60a78b840aa271a87434a67c\") {\r\n    _id\r\n    key\r\n    assetBasicInfo {\r\n        name\r\n        type\r\n    }\r\n    assetCustom {\r\n        model\r\n        manufacturer\r\n    }\r\n    resourceGroup {\r\n        assetKey\r\n    }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000",
+					"raw": "http://localhost:8081/graphql",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "4000"
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
 				}
 			},
 			"response": []
@@ -119,18 +122,16 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000",
-					"protocol": "http",
+					"raw": "60a78b840aa271a87434a67c",
 					"host": [
-						"localhost"
-					],
-					"port": "4000"
+						"60a78b840aa271a87434a67c"
+					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get Softeares",
+			"name": "Get Softeares Pag",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -138,6 +139,32 @@
 					"mode": "graphql",
 					"graphql": {
 						"query": "{\r\n  getSoftwarePag(key:\"MTItQXNzZXQtOTc0YzVmMjctNzlmNi00NGQyLWJiNDktYjdjYjgxOWYxOTA0\") \r\n   {\r\n    name\r\n    publisher\r\n    version\r\n    operatingSystem\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test GetBooks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\r\n  books {\r\n    title\r\n    author\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
