@@ -1,11 +1,12 @@
 import axios from 'axios';
+import console from '../config/logger';
 import config from '../config/config';
 /**/
 export const callApolloService = async (body: any)=> {
     let res: any;
-    console.log(body.query);
+    console.info(body.query);
     let url = config.nodeUrl + config.apolloServerURL;
-    console.log(url)
+    console.info(url)
     try {
         res = await axios.post(url, body, {
           headers: {

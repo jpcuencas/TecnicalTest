@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import console from '../config/logger';
 import config from '../config/config';
 import Pagination from '../models/Pagination';
 
@@ -41,7 +41,7 @@ export const loadAsset = async (id: string)=> {
     let res: any;
     try {
         res = await axios.get(`${config.nodeUrl}/assets/${id}`);
-        console.log(res);
+        console.info(res);
     } catch (error) {
         console.error(error);
     }

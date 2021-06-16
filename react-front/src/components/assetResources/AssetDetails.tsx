@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import console from '../../config/logger';
 import { Link } from 'react-router-dom';
 import * as AssetsService from '../../services/AssetsService';
 import Asset from '../../models/Asset/Asset';
@@ -20,7 +21,7 @@ const AssetDetails = (props:any) => {
         try {
             const body ={"query":
             `{ getAsset(id:\"${id}\") { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } }`};
-            console.log(body.query);
+            console.info(body.query);
             const element = await callApolloService(body);
             setAsset(element?.data?.getAsset);
             //const element = await AssetsService.loadAsset(id);
@@ -31,7 +32,7 @@ const AssetDetails = (props:any) => {
     };
     
     useEffect( () => {
-        console.log(props)
+        console.info(props)
         loadAssetDetails(props.match.params.id);
     }, []);
    

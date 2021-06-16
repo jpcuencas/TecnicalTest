@@ -1,9 +1,9 @@
 import axios from 'axios';
-
+import console from '../config/logger';
 import config from '../config/config';
 
 export const loggin =  async ()=> {
-    console.log('loggin');
+    console.info('loggin');
     let res:any;
     try {
         res = await axios.get(config.nodeUrl + '/autorize', {
@@ -12,12 +12,12 @@ export const loggin =  async ()=> {
     } catch (error) {
         console.error(error);
     }
-    console.log(res);
+    console.info(res);
     return res.data;
 };
 
 export const redirect =  async (code:string)=> {
-    console.log('loggin');
+    console.info('loggin');
     let res:any;
     try {
         res = await axios.get(config.nodeUrl + '/integrations', {
@@ -27,7 +27,7 @@ export const redirect =  async (code:string)=> {
     } catch (error) {
         console.error(error);
     }
-    console.log(res);
+    console.info(res);
     return res.data;
 };
 

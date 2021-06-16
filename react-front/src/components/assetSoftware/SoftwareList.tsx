@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import console from '../../config/logger';
 import * as SoftwareService from '../../services/SoftwareService';
 import Pagination from '../../models/Pagination';
 import SoftwareItem from './SoftwareItem';
@@ -25,12 +26,12 @@ const SoftwareList = (props:any)=> {
         try {
             let body:any;
             setLoading(true);
-            console.log(pagination)
-            console.log(props)
+            console.info(pagination)
+            console.info(props)
             if(pagination.operation ==='FIRST') {
                body = {"query":
                     `{ getSoftwareGraphql(key:\"${props?.value}\") { softwares{ total items { name publisher version operatingSystem } } } }`};
-                console.log(body.query); 
+                console.info(body.query); 
                 await callApolloService(body);
                 //await SoftwareService.loadSoftwareGrap(props?.value);
             }

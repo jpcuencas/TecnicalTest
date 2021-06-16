@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import console from '../config/logger';
 import config from '../config/config';
 import Pagination from '../models/Pagination';
 

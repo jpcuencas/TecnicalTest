@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import console from '../../config/logger';
 import * as AssetsService from '../../services/AssetsService';
 import Asset from '../../models/Asset/Asset';
 import Pagination from '../../models/Pagination';
@@ -24,7 +25,7 @@ const AssetsList = () => {
         try {
             let body:any;
             setLoading(true);
-            console.log(pagination)
+            console.info(pagination)
             if(!pagination.cursor){
                 body = { "query":
                 `{ getGraphqlAssetsPag ( pagination: { page: \"${pagination.page}\" limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { assetResources{ total pagination { current } items { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } } } }` };
@@ -33,10 +34,10 @@ const AssetsList = () => {
                 `{ getGraphqlAssetsPag ( pagination: { page: \"${pagination.page}\" current: "${pagination.cursor}" limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { assetResources{ total pagination { current } items { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } } } }` };
 
             }
-            console.log(body.query)
+            console.info(body.query)
             const data = await callApolloService(body);
             //const data = await AssetsService.loadAssetsGrapPagination(pagination);
-            console.log(data)
+            console.info(data)
             
             let pag: Pagination ={...pagination}
             pag.page = parseInt(pagination.page) !==0? pagination.page : '1';

@@ -1,4 +1,5 @@
 import React from 'react';
+import console from '../../config/logger';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 

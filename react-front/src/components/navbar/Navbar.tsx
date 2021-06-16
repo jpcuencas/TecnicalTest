@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import console from '../../config/logger';
 import { Link, useHistory } from 'react-router-dom';
 import config from '../../config/config';
 

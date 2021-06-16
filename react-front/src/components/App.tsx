@@ -1,4 +1,5 @@
 import React from 'react';
+import console from '../config/logger';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import  Header  from './layout/Header';
@@ -12,7 +13,7 @@ import AssetDetails from './assetResources/AssetDetails';
 
 
 function App() {
-    console.log(config)
+    console.info(config)
     // hacer llamada de loggion oauth para rellenar back
     //loggin();
   return (
