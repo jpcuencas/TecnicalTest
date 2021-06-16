@@ -11,7 +11,7 @@ const startApolloServer = async () => {
     //serverApollo.applyMiddleware({ app });
   
     await server.server.listen(app.get('port'), ()=> {
-        console.log(`Node Server on port : ${app.get('port')}`);
+        console.log(`Node Server on http://localhost:${app.get('port')}`);
     });
     console.log(`🚀 Server ready at http://localhost:${app.get('port')}${serverApollo.graphqlPath}`);
     return { serverApollo, app };

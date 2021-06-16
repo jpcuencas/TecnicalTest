@@ -42,8 +42,11 @@ const AssetsList = () => {
             pag.page = parseInt(pagination.page) !==0? pagination.page : '1';
             pag.cursor = data?.data?.getGraphqlAssetsPag?.assetResources?.pagination?.current;
             pag.total = data?.data?.getGraphqlAssetsPag?.assetResources?.total;
+            //pag.cursor = data?.assetResources?.pagination?.current;
+            //pag.total = data?.assetResources?.total;
             setPagination(pag);
             setAssets(data?.data?.getGraphqlAssetsPag?.assetResources?.items);
+            //setAssets(data?.assetResources?.items);
         } catch(error) {
             console.error(error);
         }

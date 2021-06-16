@@ -28,30 +28,32 @@ const SoftwareList = (props:any)=> {
             console.log(pagination)
             console.log(props)
             if(pagination.operation ==='FIRST') {
-               body ={"query":
-                `{ getSoftwareGraphql(key:\"${props?.value}\") { softwares{ total items { name publisher version operatingSystem } } } }`};
+               body = {"query":
+                    `{ getSoftwareGraphql(key:\"${props?.value}\") { softwares{ total items { name publisher version operatingSystem } } } }`};
                 console.log(body.query); 
                 await callApolloService(body);
                 //await SoftwareService.loadSoftwareGrap(props?.value);
             }
             
-                body ={"query":
+            body = {"query":
                 `{ getSoftwarePag(key:\"${props?.value}\" pagination: { page: \"${pagination.page}\" limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { total items { name publisher version operatingSystem } } }`};
-            //const data = await callApolloService(body);
-            const data = await SoftwareService.loadSoftwareGrapPagination(props?.value, pagination);
-            console.log(data)
+            const data = await callApolloService(body);
+            setSoftwares(data?.data?.getSoftwarePag?.items);
+            //const data = await SoftwareService.loadSoftwareGrapPagination(props?.value, pagination);
+            //setSoftwares(data?.items);
             
-            //setSoftwares(data?.data?.getSoftwarePag?.items);
-            setSoftwares(data?.items);
-            let pag: Pagination ={...pagination}
-            //pag.total = data?.data?.getSoftwarePag?.total;
-            pag.total = data?.total;
+            let pag: Pagination = {...pagination}
+            if(pag?.total) {
+                pag.totalPages = Math.ceil(pag?.total / pag.limit);
+            }
+            pag.total = data?.data?.getSoftwarePag?.total;
+            //pag.total = data?.total;
             setPagination(pag);
         } catch(error) {
             console.error(error);
         }
         setLoading(false);
-    };
+    }
     const setPageNext = (page: number) => {
         let pag: Pagination ={...pagination}
         pag.page = page.toString();
@@ -70,7 +72,7 @@ const SoftwareList = (props:any)=> {
     useEffect( () => {        
         //if(!props.match.params.id){
         //    props.history.push("/list");
-       // }
+        //}
         loadPagination(pagination);
     }, []);
    

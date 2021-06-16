@@ -21,10 +21,10 @@ const AssetDetails = (props:any) => {
             const body ={"query":
             `{ getAsset(id:\"${id}\") { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } }`};
             console.log(body.query);
-            //const element = await callApolloService(body);
-            const element = await AssetsService.loadAsset(id);
-            //setAsset(element?.getAsset);
-            setAsset(element);
+            const element = await callApolloService(body);
+            setAsset(element?.data?.getAsset);
+            //const element = await AssetsService.loadAsset(id);
+            //setAsset(element);
         } catch(error) {
             console.error(error);
         }
@@ -115,7 +115,7 @@ const AssetDetails = (props:any) => {
         </div>
         <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div className="card-body">
-          <SoftwareList value={asset?.key}/>
+            <SoftwareList value={asset?.key}/>              
           </div>
       </div>
       </div>
