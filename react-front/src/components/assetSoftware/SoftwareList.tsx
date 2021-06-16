@@ -85,7 +85,8 @@ const SoftwareList = (props:any)=> {
        (softwares?.length && !isLoading )?
        <>
        <nav aria-label="Page navigation">
-         <ul className="pagination">
+         <span className="float-left card p-2 ml-1">Page: {pagination.page}</span>
+         <ul className="float-left pagination">
            <li className={`page-item ${pagination.page === '1' ? 'disabled' : ''}`}>
            { 
            (pagination.page ==='1')
@@ -95,7 +96,7 @@ const SoftwareList = (props:any)=> {
          </li>
            <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link text-dark" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next <i className="fas fa-chevron-right"></i></a></li>
          </ul>
-         <span className="float-left card p-2 ml-1">Page: {pagination.page}</span>
+         
         {
        (pagination.total)?
        <span className="float-right card p-2 mr-5">Total: {pagination.total}</span>:<span></span>
