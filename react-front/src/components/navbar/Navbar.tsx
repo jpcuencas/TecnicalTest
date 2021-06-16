@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import console from '../../config/logger';
+import '../../scss/stiles.scss';
+import '../../scss/navbar/navbar.scss';
 import { Link, useHistory } from 'react-router-dom';
 import config from '../../config/config';
 
@@ -13,7 +15,8 @@ const Navbar = () => {
         let ventana = window.open((config.getAutorizationURL + config.client_id), "Loggin", "width=600, height=400");
         /**/
         setTimeout(()=>{
-            ventana?.close();            
+            ventana?.close();
+            console.info('loggin window is closed');
             //history.push("/list");
         }, 180 * 1000);
         /**/

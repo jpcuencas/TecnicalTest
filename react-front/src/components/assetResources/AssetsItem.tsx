@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../scss/stiles.scss';
+import '../../scss/assetResources/assetsItem.scss';
 import console from '../../config/logger';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
