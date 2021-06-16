@@ -1,7 +1,8 @@
 import React from 'react';
 import console from '../config/logger';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
+import '../scss/styles.scss';
+import '../scss/app.scss';
 import  Header  from './layout/Header';
 import Footer from './layout/Footer';
 import AssetsList from './assetResources/AssetsList';

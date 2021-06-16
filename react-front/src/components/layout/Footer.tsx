@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../scss/styles.scss';
+import '../../scss/layout/footer.scss';
 
 
 
