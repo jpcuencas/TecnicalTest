@@ -84,18 +84,19 @@ const AssetsList = () => {
     if(assets?.length && !isLoading ) {
        return (
        <>
+       <h2>All Assets</h2>
        <nav aria-label="Page navigation">
-         <ul className="pagination">
+         <ul className="pagination float-left">
            <li className={`page-item ${pagination.page === '1' ? 'disabled' : ''}`}>
            { 
            (pagination.page ==='1')
            ? <a className="page-link disabledCursor" onClick={ (event) => event.preventDefault() } href="#"><i className="fas fa-chevron-left"></i> Previous</a>
            : <a className='page-link text-dark' onClick={()=> setPagePrev(parseInt(pagination.page)-1) } href="#"><i className="fas fa-chevron-left"></i> Previous</a>
            }
-         </li>
+           </li>
            <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link text-dark" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next <i className="fas fa-chevron-right"></i></a></li>
          </ul>
-         <span className="float-left">Page: {pagination.page}</span>
+         <div className="float-left card pb-2 pl-2 pr-2 ml-6">Page: {pagination.page}</div>
         {
        (pagination.total)?
        <span className="float-right ml-5">Total: {pagination.total}</span>:<span></span>
