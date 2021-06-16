@@ -42,7 +42,8 @@
     "coverage": "npm run test -- --coverage > coverage.log",
     "clean-coverage": "rimraf coverage & rimraf ./coverage.log",
     "eject": "react-scripts eject",
-    "clean": "npm run clean-build & npm run clean-coverage & npm run clean-lint & npm run clean-dependences"
+    "clean-logs": "rimraf logs",
+    "clean": "npm run clean-build & npm run clean-coverage & npm run clean-lint & npm run clean-logs & npm run clean-dependences"
   },
   "browserslist": {
     "production": [
