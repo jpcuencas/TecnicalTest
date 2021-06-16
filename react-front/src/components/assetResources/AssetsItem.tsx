@@ -16,7 +16,7 @@ const AssetItem = ({element}: Props) => {
             <td>{element?.assetBasicInfo?.type}</td>
             <td>{element?.assetCustom?.model}</td>
             <td>{element?.assetCustom?.manufacturer}</td>
-            <td><Link to={`/detail/${element?._id}/${element?.key}`}> Details </Link></td>
+            <td><Link className="text-dark" to={`/detail/${element?._id}/${element?.key}`}> Details <i className="fas fa-info-circle"></i> </Link></td>
         </tr>
     );
 };

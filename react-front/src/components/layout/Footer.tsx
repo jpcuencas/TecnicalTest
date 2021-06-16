@@ -11,7 +11,7 @@ function Footer() {
             <nav className="col-12 navbar navbar-light bg-light">
                 <div className="container-fluid">
                     <span className="navbar-text">
-                        developed by jcuencas.
+                    <i className="fas fa-code-branch"></i> developed by jcuencas.
                     </span>
                 </div>
             </nav>

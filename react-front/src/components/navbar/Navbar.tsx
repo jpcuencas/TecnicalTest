@@ -55,18 +55,17 @@ const Navbar = () => {
             <div className="navbar-nav">
                 {(loggin) ?
 
-                <Link className="nav-link" to="/list">Assets</Link>
+                <Link className="nav-link text-dark" to="/list">Assets</Link>
                 :
                     <p></p>
                 }            
             </div>
           </div>
-
         </div>
       </nav>
     )
 }
-
+// <i className="fas fa-chevron-left"></i>
 
 export default Navbar
 

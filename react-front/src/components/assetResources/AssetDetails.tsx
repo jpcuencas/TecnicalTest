@@ -124,7 +124,7 @@ const AssetDetails = (props:any) => {
       </div>
       </div>
       <hr/>
-          <Link className="nav-link" to="/list">Back</Link>
+          <Link className="nav-link text-dark" to="/list"><i className="fas fa-arrow-left"></i> Back</Link>
       </>
       );
     } else {
