@@ -89,18 +89,18 @@ const SoftwareList = (props:any)=> {
            <li className={`page-item ${pagination.page === '1' ? 'disabled' : ''}`}>
            { 
            (pagination.page ==='1')
-           ? <a className="page-link disabledCursor" onClick={ (event) => event.preventDefault() } href="#"><i className="fas fa-chevron-left"></i> Previous</a>
-           : <a className='page-link' onClick={()=> setPagePrev(parseInt(pagination.page)-1) } href="#"><i className="fas fa-chevron-left"></i> Previous</a>
+           ? <a className="page-link text-dark disabledCursor" onClick={ (event) => event.preventDefault() } href="#"><i className="fas fa-chevron-left"></i> Previous</a>
+           : <a className='page-link text-dark' onClick={()=> setPagePrev(parseInt(pagination.page)-1) } href="#"><i className="fas fa-chevron-left"></i> Previous</a>
            }
          </li>
-           <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next <i className="fas fa-chevron-right"></i></a></li>
+           <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link text-dark" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next <i className="fas fa-chevron-right"></i></a></li>
          </ul>
-         <p>Page: {pagination.page}</p>
-       </nav>
-       {
+         <span className="float-left ml-1">Page: {pagination.page}</span>
+        {
        (pagination.total)?
-       <p>Total: {pagination.total}</p>:<p></p>
+       <span className="float-right mr-5">Total: {pagination.total}</span>:<span></span>
         }
+       </nav>
        
        <table className="table">
         <thead>

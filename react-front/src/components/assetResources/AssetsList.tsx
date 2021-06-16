@@ -102,8 +102,8 @@ const AssetsList = () => {
         }
        <span className="float-right">
          <span>Display: </span>
-         <select id="num-items" className="form-select" onChange={(e)=>{ changeItemsSize(e) }}>
-          <option value="10" selected>10</option>
+         <select id="num-items" className="form-select" value={pagination.limit} onChange={(e)=>{ changeItemsSize(e) }}>
+          <option value="10">10</option>
           <option value="20">20</option>
           <option value="30">30</option>
         </select>

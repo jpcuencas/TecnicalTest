@@ -32,6 +32,23 @@ const AssetDetails = (props:any) => {
             console.error(error);
         }
     };
+    const toggleButton = (e:any) =>{
+        let child:any =e.target.children[0];
+        let element:any;
+        if(child) {
+            element = document.querySelector('#' + child?.id);
+        } else {
+            element = document.querySelector('#' + e.target?.id);
+        }
+        
+        if(element?.classList.contains('fa-chevron-right')) {
+            element?.classList.remove('fa-chevron-right');
+            element?.classList.add('fa-chevron-down');
+        } else {
+            element?.classList.add('fa-chevron-right');
+            element?.classList.remove('fa-chevron-down');
+        }
+    }
     
     useEffect( () => {
         console.info(props)
@@ -64,8 +81,8 @@ const AssetDetails = (props:any) => {
         <div className="card">
           <div className="card-header" id="headingOne">
             <h5 className="mb-0">
-              <button className="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-               <h5><i className="fas fa-chevron-right"></i> Basic Info</h5>
+              <button className="btn btn-link text-dark" type="button" onClick={(e)=>{toggleButton(e)}} data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+               <h5><i className="fas fa-chevron-right" id="basic-icon"></i> Basic Info</h5>
               </button>
             </h5>
           </div>
@@ -90,8 +107,8 @@ const AssetDetails = (props:any) => {
         <div className="card">
         <div className="card-header" id="headingTwo">
           <h5 className="mb-0">
-            <button className="btn btn-link collapsed text-dark" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-             <h5><i className="fas fa-chevron-right"></i> Custom</h5>
+            <button className="btn btn-link collapsed text-dark" type="button" onClick={(e)=>{toggleButton(e)}} data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+             <h5><i className="fas fa-chevron-right" id="custom-icon"></i> Custom</h5>
             </button>
           </h5>
         </div>
@@ -116,8 +133,8 @@ const AssetDetails = (props:any) => {
         <div className="card">
         <div className="card-header" id="headingThree">
           <h5 className="mb-0">
-            <button className="btn btn-link collapsed text-dark" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-             <h5><i className="fas fa-chevron-right"></i> Software In Asset</h5>
+            <button className="btn btn-link collapsed text-dark" type="button" onClick={(e)=>{toggleButton(e)}} data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+             <h5><i className="fas fa-chevron-right" id="software-icon"></i> Software In Asset</h5>
             </button>
           </h5>
         </div>
