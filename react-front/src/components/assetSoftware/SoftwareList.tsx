@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../scss/stiles.scss';
+import '../../scss/styles.scss';
 import '../../scss/assetSoftware/softwareList.scss';
 import console from '../../config/logger';
 import * as SoftwareService from '../../services/SoftwareService';

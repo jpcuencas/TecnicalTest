@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import console from '../../config/logger';
-import '../../scss/stiles.scss';
+import '../../scss/styles.scss';
 import '../../scss/navbar/navbar.scss';
 import { Link, useHistory } from 'react-router-dom';
 import config from '../../config/config';

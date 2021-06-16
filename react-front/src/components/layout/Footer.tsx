@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../scss/stiles.scss';
+import '../../scss/styles.scss';
 import '../../scss/layout/footer.scss';
 
 
