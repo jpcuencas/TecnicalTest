@@ -28,9 +28,10 @@ const typeDefs = apollo_server_1.gql `
   }
 
 type Pagination {
-    page: Int!
-    cursor: String
-    limit: Int
+    page: String
+    limit: Int!
+    current: String
+    next: String
     operation: String
     total: Int
     totalPages: Int
@@ -41,14 +42,17 @@ type AssetResources {
     items: [Asset]
 }
   input PaginationInput {
-    page: Int!
-    cursor: String
-    limit: Int
+    page: String
+    limit: Int!
+    current: String
+    next: String
     operation: String
     total: Int
     totalPages: Int
 }
-
+type AssetsList {
+    assetResources: AssetResources
+}
 type Software {
     name: String!
     publisher: String
@@ -65,8 +69,9 @@ type Softwares {
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. 
   type Query {
+    books: [Book]
     
-    getGraphqlAssetsPag(pagination:PaginationInput):AssetResources,
+    getGraphqlAssetsPag(pagination:PaginationInput):AssetsList,
     getAssetsGraphql:AssetResources,
     getAsset(id:String):Asset,
     getAssets:[Asset],

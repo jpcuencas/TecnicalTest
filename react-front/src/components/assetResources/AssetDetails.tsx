@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as AssetsService from '../../services/AssetsService';
 import Asset from '../../models/Asset/Asset';
 import SoftwareList from '../assetSoftware/SoftwareList';
-//import { callApolloService } from '../../services/ApolloService';
+import { callApolloService } from '../../services/ApolloService';
 
 
 
@@ -23,14 +23,13 @@ const AssetDetails = (props:any) => {
             console.log(body.query);
             //const element = await callApolloService(body);
             const element = await AssetsService.loadAsset(id);
+            //setAsset(element?.getAsset);
             setAsset(element);
         } catch(error) {
             console.error(error);
         }
     };
-    const sleep = (ms:any) => {
-        return new Promise(resolve => setTimeout(resolve, ms));
-      }
+    
     useEffect( () => {
         console.log(props)
         loadAssetDetails(props.match.params.id);
@@ -116,7 +115,7 @@ const AssetDetails = (props:any) => {
         </div>
         <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div className="card-body">
-            <SoftwareList value={asset?.key}/>
+          <SoftwareList value={asset?.key}/>
           </div>
       </div>
       </div>
@@ -128,6 +127,7 @@ const AssetDetails = (props:any) => {
     } else {
         return <p>Has no element</p>;
     }
+    //    <SoftwareList value={asset?.key}/>
 }
 
 export default AssetDetails;

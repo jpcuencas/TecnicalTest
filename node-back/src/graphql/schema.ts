@@ -30,9 +30,10 @@ const typeDefs = gql`
   }
 
 type Pagination {
-    page: Int!
-    cursor: String
-    limit: Int
+    page: String
+    limit: Int!
+    current: String
+    next: String
     operation: String
     total: Int
     totalPages: Int
@@ -43,38 +44,43 @@ type AssetResources {
     items: [Asset]
 }
   input PaginationInput {
-    page: Int!
-    cursor: String
-    limit: Int
+    page: String
+    limit: Int!
+    current: String
+    next: String
     operation: String
     total: Int
     totalPages: Int
 }
-
+type AssetsList {
+    assetResources: AssetResources
+}
 type Software {
     name: String!
     publisher: String
     version: String
     operatingSystem: String
 }
-
 type Softwares {
     total: Int
-    pagination: Pagination
     items: [Software]
+}
+type SoftwareList {
+    softwares: Softwares
 }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. 
   type Query {
+    books: [Book]
     
-    getGraphqlAssetsPag(pagination:PaginationInput):AssetResources,
+    getGraphqlAssetsPag(pagination:PaginationInput):AssetsList,
     getAssetsGraphql:AssetResources,
     getAsset(id:String):Asset,
     getAssets:[Asset],
 
-    getSoftwarePag(key:String, pagination:PaginationInput):[Software],
-    getSoftwareGraphql(key:String):Softwares,
+    getSoftwarePag(key:String, pagination:PaginationInput):Softwares,
+    getSoftwareGraphql(key:String):SoftwareList,
     getSoftware:Software
   }
 `;

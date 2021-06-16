@@ -1,4 +1,4 @@
-import logger from "../config/logger";
+import console from "../config/logger";
 import axios from 'axios';
 import config from '../config/config';
 import oauthService from './oauth.service';
@@ -9,8 +9,8 @@ let check = false;
     let res:any;
     let siteName = config.siteName;
     let element:any = {};
-    logger.info('token')
-    logger.info(token)
+    console.info('token')
+    console.info(token)
     const body={"query":
     "{ me { username profiles { site { id name } } } }"}
     try {
@@ -20,15 +20,15 @@ let check = false;
             'Authorization': 'Bearer ' + token
           }
         });
-        logger.info('response');
-        logger.info(res);
-        logger.info(res?.data);
-        logger.info(res?.data?.data?.me?.profiles);
+        console.info('response');
+        console.info(res);
+        console.info(res?.data);
+        console.info(res?.data?.data?.me?.profiles);
         element = res?.data?.data?.me?.profiles?.filter((a:any)=> a?.site.name === siteName)[0];
-        logger.info(element?.site?.id);
+        console.info(element?.site?.id);
         idSite = element?.site?.id;
     } catch (error) {
-        logger.error(error);
+        console.error(error);
         if(error.status === 401 && ! check) {
             await oauthService.getRefresh(oauthService.getTokens().refreshToken);
             check = true;

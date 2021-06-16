@@ -17,6 +17,7 @@ let refreshBody =
     "grant_type": "refresh_token",
     "refresh_token": ""
 };
+
 let token:string;
 let refreshtoken:string;
 
@@ -91,7 +92,6 @@ export default {
         token = res?.data?.access_token
         return res;
     }
-
 };
 
 

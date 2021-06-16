@@ -4,9 +4,19 @@ import oauthService from "../services/oauth.service";
 import sitesService from "../services/sites.service";
 import softwareService from "../services/software.service";
 
-
+const books = [
+    {
+      title: 'The Awakening',
+      author: 'Kate Chopin',
+    },
+    {
+      title: 'City of Glass',
+      author: 'Paul Auster',
+    },
+];
 const resolvers = {
     Query: {
+      books: () => books,
       getGraphqlAssetsPag: async(_:any, args:any)=> {
         try {
             logger.info(args);
@@ -59,6 +69,16 @@ const resolvers = {
         } catch (error) {
             logger.error(error);
         } 
+      },
+      getSoftwarePag: async(_:any, args:any)=> {
+        try {
+            const result = await softwareService.getSoftwarePag(args.key, args?.pagination);
+            logger.info('----- getSoftwarePag Results ---------');
+            logger.info(result);
+            return result;
+        } catch (error) {
+            logger.error(error);
+        }
       },
       getSoftware: async()=> {
         try {

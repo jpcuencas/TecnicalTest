@@ -1,5 +1,5 @@
 
-import logger from "../config/logger";
+import console from "../config/logger";
 import axios from 'axios';
 import config from '../config/config';
 
@@ -9,12 +9,12 @@ import oauthService from './oauth.service';
 
 let check = false;
 let software: Software[] =  [];
-/**
 
+/**
 const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string, pagination:Pagination) => {
     let res:any;
-    logger.info('idSite')
-    logger.info(idSite)
+    console.info('idSite')
+    console.info(idSite)
     if(idSite){
         let body = (pagination.page==0)? {"query":
         `query getSoftwaresByAssetKey {site(id: \"${idSite}\") { softwares(key: \"${key}\" pagination: { limit: ${pagination.limit}, page: FIRST }, fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\"]) { total items } } }`}
@@ -27,18 +27,17 @@ const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string,
                 'Authorization': 'Bearer ' + token
               }
             });
-            logger.info('response')
-            logger.info(res)
-            logger.info(res?.data)
-            logger.info(res?.data?.data?.site)
-            logger.info(res?.data?.data?.site?.softwares?.items)
+            console.info(res)
+            console.info(res?.data)
+            console.info(res?.data?.data?.site)
+            console.info(res?.data?.data?.site?.softwares?.items)
             software = res?.data?.data?.site?.softwares?.items;
         } catch (error) {
-            logger.error(error);
+            console.error(error);
             if(error.status ==403) {
                 oauthService.getRefresh(oauthService.getTokens().refreshToken)
             }
-            return error?.response;
+            return error?.console;
         }
         return res?.data?.data?.site;
     }
@@ -48,8 +47,8 @@ const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string,
 
 const getGraphqlSoftware = async (token: string, idSite: string, key: string) => {
     let res:any;
-    logger.info('idSite');
-    logger.info(idSite);
+    console.info('idSite');
+    console.info(idSite);
     if(idSite) {
         const body = {"query":
         "query getSoftwaresByAssetKey {site(id: \"" + idSite + "\") { softwares(key: \"" + key + "\" fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\",]) { total items } } }"
@@ -62,14 +61,14 @@ const getGraphqlSoftware = async (token: string, idSite: string, key: string) =>
                 'Authorization': 'Bearer ' + token
               }
             });
-            logger.info('response');
-            logger.info(res);
-            logger.info(res?.data);
-            logger.info(res?.data?.data?.site);
-            logger.info(res?.data?.data?.site?.softwares?.items);
+            console.info('console');
+            console.info(res);
+            console.info(res?.data);
+            console.info(res?.data?.data?.site);
+            console.info(res?.data?.data?.site?.softwares?.items);
             software = res?.data?.data?.site?.softwares?.items;
         } catch (error) {
-            logger.error(error);
+            console.error(error);
             if(error.status === 401 && ! check) {
                 await oauthService.getRefresh(oauthService.getTokens().refreshToken);
                 check = true;
@@ -77,7 +76,7 @@ const getGraphqlSoftware = async (token: string, idSite: string, key: string) =>
                 check = false;
                 return result;
             }
-            return error?.response;
+            return error?.console;
         }
         return res?.data?.data?.site;
     }
@@ -88,15 +87,13 @@ const getSoftwarePag = async (key: string, pagination:Pagination) => {
     const page = pagination.page || 1,
 	per_page = pagination.limit || 10,
 	offset = (page - 1) * per_page;
-    logger.info('software');
-    logger.info(software);
+    console.info('software');
+    console.info(software);
 	const paginatedItems = software.slice(offset).slice(0, per_page);
-	const total_pages = Math.ceil(software.length / per_page);
-    logger.info('----- ITEMS ------');
-    logger.info(paginatedItems);
+    console.info('----- ITEMS ------');
+    console.info(paginatedItems);
     return {
         items:paginatedItems,
-        totalPages: total_pages,
         total: software.length
     }
 }

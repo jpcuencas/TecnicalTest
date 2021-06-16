@@ -25,10 +25,13 @@ const SoftwareItem = ({element}: Props) => {
             <td>{element?.version}</td>
             <td>{element?.publisher}</td>
             <td>{element?.operatingSystem}</td>
-            <td>{formatDate(element?.installDate)}</td>
-            <td>{formatDate(element?.lastChanged)}</td>
         </tr>
     );
+    /** 
+    
+            <td>{formatDate(element?.installDate)}</td>
+            <td>{formatDate(element?.lastChanged)}</td>
+    /**/
 };
 
 export default SoftwareItem;

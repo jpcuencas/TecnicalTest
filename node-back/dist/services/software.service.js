@@ -22,8 +22,8 @@ let software = [];
 
 const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string, pagination:Pagination) => {
     let res:any;
-    logger.info('idSite')
-    logger.info(idSite)
+    console.info('idSite')
+    console.info(idSite)
     if(idSite){
         let body = (pagination.page==0)? {"query":
         `query getSoftwaresByAssetKey {site(id: \"${idSite}\") { softwares(key: \"${key}\" pagination: { limit: ${pagination.limit}, page: FIRST }, fields: [ \"softwares.installDate\", \"softwares.lastChanged\", \"softwares.currentUser\", \"softwares.msi\", \"softwares.name\", \"softwares.publisher\", \"softwares.operatingSystem\", \"softwares.version\", \"softwares.release\", \"softwares.architecture\", \"softwares.status\", \"softwares.error\"]) { total items } } }`}
@@ -36,18 +36,18 @@ const getGraphqlSoftwarePag = async (token: string, idSite: string, key: string,
                 'Authorization': 'Bearer ' + token
               }
             });
-            logger.info('response')
-            logger.info(res)
-            logger.info(res?.data)
-            logger.info(res?.data?.data?.site)
-            logger.info(res?.data?.data?.site?.softwares?.items)
+            console.info('console')
+            console.info(res)
+            console.info(res?.data)
+            console.info(res?.data?.data?.site)
+            console.info(res?.data?.data?.site?.softwares?.items)
             software = res?.data?.data?.site?.softwares?.items;
         } catch (error) {
-            logger.error(error);
+            console.error(error);
             if(error.status ==403) {
                 oauthService.getRefresh(oauthService.getTokens().refreshToken)
             }
-            return error?.response;
+            return error?.console;
         }
         return res?.data?.data?.site;
     }
@@ -69,7 +69,7 @@ const getGraphqlSoftware = (token, idSite, key) => __awaiter(void 0, void 0, voi
                     'Authorization': 'Bearer ' + token
                 }
             });
-            logger_1.default.info('response');
+            logger_1.default.info('console');
             logger_1.default.info(res);
             logger_1.default.info(res === null || res === void 0 ? void 0 : res.data);
             logger_1.default.info((_b = (_a = res === null || res === void 0 ? void 0 : res.data) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.site);
@@ -85,7 +85,7 @@ const getGraphqlSoftware = (token, idSite, key) => __awaiter(void 0, void 0, voi
                 check = false;
                 return result;
             }
-            return error === null || error === void 0 ? void 0 : error.response;
+            return error === null || error === void 0 ? void 0 : error.console;
         }
         return (_m = (_l = res === null || res === void 0 ? void 0 : res.data) === null || _l === void 0 ? void 0 : _l.data) === null || _m === void 0 ? void 0 : _m.site;
     }

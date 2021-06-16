@@ -32,7 +32,7 @@ describe('GET /assets', () => {
         const response = yield api.get('/assets');
         expect((response === null || response === void 0 ? void 0 : response.body) || []).toHaveLength(0);
     }));
-    it('GET one assets', () => __awaiter(void 0, void 0, void 0, function* () {
+    xit('GET one assets', () => __awaiter(void 0, void 0, void 0, function* () {
         let id = 0;
         const response = yield api.get('/assets/' + id)
             .set('Accept', 'application/json')

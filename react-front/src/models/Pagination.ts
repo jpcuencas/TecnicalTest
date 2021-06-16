@@ -1,5 +1,5 @@
 export default interface Pagination {
-    page: number;
+    page: string;
     cursor?: string;
     limit: number;
     operation: string;

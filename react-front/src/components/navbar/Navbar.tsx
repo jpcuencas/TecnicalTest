@@ -19,7 +19,7 @@ const Navbar = () => {
         let logg = true;
         setLoggin(logg);
         if(history.location.pathname != '/') {
-            history.push("/");
+          //  history.push("/");
         }
     }
     

@@ -2,7 +2,7 @@
 
 export default interface Pagination {
     page: number;
-    cursor: string;
+    current: string;
     limit: number;
     operation: string;
     total?: number;

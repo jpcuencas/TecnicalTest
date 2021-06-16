@@ -20,17 +20,17 @@ const software_service_1 = __importDefault(require("../services/software.service
 /** PAGINATION IS NOT WORKING ***
 export const getSoftwareGraphqlPag: RequestHandler = async (req: any, res: any) => {
     try {
-        logger.info('------------------------------')
-        logger.info(req.query)
-        logger.info('------------------------------')
-        logger.info(req.session)
-        logger.info('------------------------------')
-        logger.info(req.cookies)
-        logger.info(oauthService.getTokens())
-        logger.info(sitesService.getId())
+        console.info('------------------------------')
+        console.info(req.query)
+        console.info('------------------------------')
+        console.info(req.session)
+        console.info('------------------------------')
+        console.info(req.cookies)
+        console.info(oauthService.getTokens())
+        console.info(sitesService.getId())
         const result = await softwareService.getGraphqlSoftwarePag(oauthService.getTokens().token, sitesService.getId(), req.params.key, req.query);
-        logger.info('----- results ---------')
-        logger.info(result)
+        console.info('----- results ---------')
+        console.info(result)
         res.json(result);
     } catch (error) {
         res.json(error);

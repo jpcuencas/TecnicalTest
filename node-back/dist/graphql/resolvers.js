@@ -17,8 +17,19 @@ const assets_service_1 = __importDefault(require("../services/assets.service"));
 const oauth_service_1 = __importDefault(require("../services/oauth.service"));
 const sites_service_1 = __importDefault(require("../services/sites.service"));
 const software_service_1 = __importDefault(require("../services/software.service"));
+const books = [
+    {
+        title: 'The Awakening',
+        author: 'Kate Chopin',
+    },
+    {
+        title: 'City of Glass',
+        author: 'Paul Auster',
+    },
+];
 const resolvers = {
     Query: {
+        books: () => books,
         getGraphqlAssetsPag: (_, args) => __awaiter(void 0, void 0, void 0, function* () {
             try {
                 logger_1.default.info(args);

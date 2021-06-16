@@ -4,18 +4,18 @@ import Pagination from '../../models/Pagination';
 import SoftwareItem from './SoftwareItem';
 import Software from '../../models/Software';
 import config from '../../config/config';
-//import { callApolloService } from '../../services/ApolloService';
+import { callApolloService } from '../../services/ApolloService';
 interface Props {
     value:any
 }
-const SoftwareList = (props:any)=> { //({key}:Props) => {
+const SoftwareList = (props:any)=> { 
     const initialElements: Software[] = [];
     const [isLoading, setLoading] = useState(false);
     const [softwares, setSoftwares] = useState<Software[]>(initialElements);
     const pageSize: number = Number(config.pageSize);
     /**/
     const initialPagination: Pagination = {
-        page:1,
+        page:'1',
         limit:pageSize,
         operation:'FIRST'
     };
@@ -29,19 +29,24 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
             console.log(props)
             if(pagination.operation ==='FIRST') {
                body ={"query":
-                `{ getSoftwarePag(key:\"${props?.value}\") { name publisher version operatingSystem } }`};
+                `{ getSoftwareGraphql(key:\"${props?.value}\") { softwares{ total items { name publisher version operatingSystem } } } }`};
                 console.log(body.query); 
-                //await callApolloService(body);
-                await SoftwareService.loadSoftwareGrap(props?.value);
+                await callApolloService(body);
+                //await SoftwareService.loadSoftwareGrap(props?.value);
             }
             
                 body ={"query":
-                `{ getSoftwareGraphql(key:\"${props?.value}\" pagination: { page: ${pagination.page} limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { total pagination { page cursor limit } items { name publisher version operatingSystem } } }`};
+                `{ getSoftwarePag(key:\"${props?.value}\" pagination: { page: \"${pagination.page}\" limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { total items { name publisher version operatingSystem } } }`};
             //const data = await callApolloService(body);
             const data = await SoftwareService.loadSoftwareGrapPagination(props?.value, pagination);
             console.log(data)
             
+            //setSoftwares(data?.data?.getSoftwarePag?.items);
             setSoftwares(data?.items);
+            let pag: Pagination ={...pagination}
+            //pag.total = data?.data?.getSoftwarePag?.total;
+            pag.total = data?.total;
+            setPagination(pag);
         } catch(error) {
             console.error(error);
         }
@@ -49,14 +54,14 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
     };
     const setPageNext = (page: number) => {
         let pag: Pagination ={...pagination}
-        pag.page = page;
+        pag.page = page.toString();
         pag.operation='NEXT'
         setPagination(pag);
         loadPagination(pag);
     }
     const setPagePrev = (page: number) => {
         let pag: Pagination ={...pagination}
-        pag.page = page;
+        pag.page = page.toString();
         pag.operation='PREV'
         setPagination(pag);
         loadPagination(pag);
@@ -76,16 +81,21 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
        <>
        <nav aria-label="Page navigation">
          <ul className="pagination">
-           <li className={`page-item ${pagination.page === 1 ? 'disabled' : ''}`}>
+           <li className={`page-item ${pagination.page === '1' ? 'disabled' : ''}`}>
            { 
-           (pagination.page ===1)
+           (pagination.page ==='1')
            ? <a className="page-link disabledCursor" onClick={ (event) => event.preventDefault() } href="#">Previous</a>
-           : <a className='page-link' onClick={()=> setPagePrev(pagination.page-1) } href="#">Previous</a>
+           : <a className='page-link' onClick={()=> setPagePrev(parseInt(pagination.page)-1) } href="#">Previous</a>
            }
          </li>
-           <li className={`page-item ${pagination.page === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(pagination.page+1) } href="#">Next</a></li>
+           <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next</a></li>
          </ul>
+         <p>Page: {pagination.page}</p>
        </nav>
+       {
+       (pagination.total)?
+       <p>Total: {pagination.total}</p>:<p></p>
+        }
        
        <table className="table">
         <thead>
@@ -94,8 +104,6 @@ const SoftwareList = (props:any)=> { //({key}:Props) => {
             <th scope="col">Version</th>
             <th scope="col">Publisher</th>
             <th scope="col">Operating System</th>
-            <th scope="col">Install Date</th>
-            <th scope="col">Last Changed</th>
           </tr>
         </thead>
         <tbody>

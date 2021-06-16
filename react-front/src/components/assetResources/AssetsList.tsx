@@ -4,7 +4,7 @@ import Asset from '../../models/Asset/Asset';
 import Pagination from '../../models/Pagination';
 import AssetItem from './AssetsItem';
 import config from '../../config/config';
-//import { callApolloService } from '../../services/ApolloService';
+import { callApolloService } from '../../services/ApolloService';
 
 const AssetsList = () => {
     const initialAssets: Asset[] = [];
@@ -14,7 +14,7 @@ const AssetsList = () => {
     const pageSize: number = Number(config.pageSize);
     /**/
     const initialPagination: Pagination = {
-        page:0,
+        page:'0',
         limit:pageSize,
         operation:'FIRST'
     };
@@ -22,21 +22,28 @@ const AssetsList = () => {
     
     const loadPagination = async(pagination: Pagination) => {
         try {
+            let body:any;
             setLoading(true);
             console.log(pagination)
-            const body = { "query":
-            `{ getAssetsGraphql ( pagination: { page: ${pagination.page} limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { total pagination { cursor } items { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } } }` };
+            if(!pagination.cursor){
+                body = { "query":
+                `{ getGraphqlAssetsPag ( pagination: { page: \"${pagination.page}\" limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { assetResources{ total pagination { current } items { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } } } }` };
+            }else {
+                body = { "query":
+                `{ getGraphqlAssetsPag ( pagination: { page: \"${pagination.page}\" current: "${pagination.cursor}" limit: ${pagination.limit} operation: \"${pagination.operation}\" } ) { assetResources{ total pagination { current } items { _id key assetBasicInfo { name type } assetCustom { model manufacturer } resourceGroup { assetKey } } } } }` };
+
+            }
             console.log(body.query)
-            //const data = await callApolloService(body);
-            const data = await AssetsService.loadAssetsGrapPagination(pagination);
+            const data = await callApolloService(body);
+            //const data = await AssetsService.loadAssetsGrapPagination(pagination);
             console.log(data)
             
             let pag: Pagination ={...pagination}
-            pag.page = pagination.page !==0? pagination.page: 1;
-            pag.cursor = data?.assetResources?.pagination?.current;
-            pag.total = data?.assetResources?.total;
+            pag.page = parseInt(pagination.page) !==0? pagination.page : '1';
+            pag.cursor = data?.data?.getGraphqlAssetsPag?.assetResources?.pagination?.current;
+            pag.total = data?.data?.getGraphqlAssetsPag?.assetResources?.total;
             setPagination(pag);
-            setAssets(data?.assetResources?.items);
+            setAssets(data?.data?.getGraphqlAssetsPag?.assetResources?.items);
         } catch(error) {
             console.error(error);
         }
@@ -44,14 +51,14 @@ const AssetsList = () => {
     };
     const setPageNext = (page: number) => {
         let pag: Pagination ={...pagination}
-        pag.page = page;
+        pag.page = page.toString();
         pag.operation='NEXT'
         setPagination(pag);
         loadPagination(pag);
     }
     const setPagePrev = (page: number) => {
         let pag: Pagination ={...pagination}
-        pag.page = page;
+        pag.page = page.toString();
         pag.operation='PREV'
         setPagination(pag);
         loadPagination(pag);
@@ -66,15 +73,16 @@ const AssetsList = () => {
        <>
        <nav aria-label="Page navigation">
          <ul className="pagination">
-           <li className={`page-item ${pagination.page === 1 ? 'disabled' : ''}`}>
+           <li className={`page-item ${pagination.page === '1' ? 'disabled' : ''}`}>
            { 
-           (pagination.page ===1)
+           (pagination.page ==='1')
            ? <a className="page-link disabledCursor" onClick={ (event) => event.preventDefault() } href="#">Previous</a>
-           : <a className='page-link' onClick={()=> setPagePrev(pagination.page-1) } href="#">Previous</a>
+           : <a className='page-link' onClick={()=> setPagePrev(parseInt(pagination.page)-1) } href="#">Previous</a>
            }
          </li>
-           <li className={`page-item ${pagination.page === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(pagination.page+1) } href="#">Next</a></li>
+           <li className={`page-item ${parseInt(pagination.page) === pagination.totalPages ? 'disabled' : ''}`}><a className="page-link" onClick={()=> setPageNext(parseInt(pagination.page)+1) } href="#">Next</a></li>
          </ul>
+         <p>Page: {pagination.page}</p>
        </nav>
        {
        (pagination.total)?
