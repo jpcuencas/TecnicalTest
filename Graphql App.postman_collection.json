@@ -39,7 +39,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\r\n    getGraphqlAssetsPag (\r\n    pagination: {\r\n        limit: 10\r\n        operation: \"NEXT\"\r\n    })\r\n    {\r\n        assetResources{\r\n            total\r\n            pagination {\r\n                limit\r\n                current\r\n                next\r\n                page\r\n            }\r\n            items {\r\n                _id\r\n                key\r\n                assetBasicInfo {\r\n                    name\r\n                    type\r\n                }\r\n                assetCustom {\r\n                    model\r\n                    manufacturer\r\n                }\r\n                resourceGroup {\r\n                    assetKey\r\n                }\r\n            }\r\n        }\r\n    }  \r\n}",
+						"query": "{\r\n    getGraphqlAssetsPag (\r\n    pagination: {\r\n        limit: 10\r\n        operation: \"FIRST\"\r\n    })\r\n    {\r\n        assetResources{\r\n            total\r\n            pagination {\r\n                limit\r\n                current\r\n                next\r\n                page\r\n            }\r\n            items {\r\n                _id\r\n                key\r\n                assetBasicInfo {\r\n                    name\r\n                    type\r\n                }\r\n                assetCustom {\r\n                    model\r\n                    manufacturer\r\n                }\r\n                resourceGroup {\r\n                    assetKey\r\n                }\r\n            }\r\n        }\r\n    }  \r\n}",
 						"variables": ""
 					}
 				},
@@ -65,7 +65,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\r\n  getAssetsGraphql {\r\n      total\r\n      items {\r\n        _id\r\n        key\r\n        assetBasicInfo {\r\n            name\r\n            type\r\n        }\r\n        assetCustom {\r\n            model\r\n            manufacturer\r\n        }\r\n        resourceGroup {\r\n            assetKey\r\n        }\r\n      }\r\n  }\r\n}",
+						"query": "{\r\n  getAssetsGraphql {\r\n      assetResources {\r\n        total\r\n        items {\r\n            _id\r\n            key\r\n            assetBasicInfo {\r\n                name\r\n                type\r\n            }\r\n            assetCustom {\r\n                model\r\n                manufacturer\r\n            }\r\n            resourceGroup {\r\n                assetKey\r\n            }\r\n        }\r\n      }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
@@ -117,14 +117,19 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\r\n  getSoftwareGraphql(key:\"MTItQXNzZXQtOTc0YzVmMjctNzlmNi00NGQyLWJiNDktYjdjYjgxOWYxOTA0\"\r\n      pagination: {\r\n            page: 1\r\n            limit: 10\r\n            operation: \"FIRST\"\r\n        }) \r\n  {\r\n      total\r\n      pagination {\r\n          page\r\n          cursor\r\n          limit\r\n      }\r\n      items {\r\n        name\r\n        publisher\r\n        version\r\n        operatingSystem\r\n      }\r\n  }\r\n}",
+						"query": "{ \r\n    getSoftwareGraphql(key:\"MTI0LUFzc2V0LTk3NGM1ZjI3LTc5ZjYtNDRkMi1iYjQ5LWI3Y2I4MTlmMTkwNA==\") \r\n    { \r\n        softwares { \r\n            total\r\n            items {\r\n                name \r\n                publisher \r\n                version \r\n                operatingSystem \r\n            }\r\n        } \r\n    } \r\n}",
 						"variables": ""
 					}
 				},
 				"url": {
-					"raw": "60a78b840aa271a87434a67c",
+					"raw": "http://localhost:8081/graphql",
+					"protocol": "http",
 					"host": [
-						"60a78b840aa271a87434a67c"
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"graphql"
 					]
 				}
 			},
@@ -138,7 +143,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "{\r\n  getSoftwarePag(key:\"MTItQXNzZXQtOTc0YzVmMjctNzlmNi00NGQyLWJiNDktYjdjYjgxOWYxOTA0\") \r\n   {\r\n    name\r\n    publisher\r\n    version\r\n    operatingSystem\r\n  }\r\n}",
+						"query": "{ \r\n    getSoftwarePag(\r\n        key:\"MTI0LUFzc2V0LTk3NGM1ZjI3LTc5ZjYtNDRkMi1iYjQ5LWI3Y2I4MTlmMTkwNA==\" \r\n        pagination: { \r\n            page: \"0\" \r\n            limit: 10 \r\n            operation: \"FIRST\" \r\n        } \r\n    ) \r\n    { \r\n        total \r\n        items { \r\n            name \r\n            publisher \r\n            version \r\n            operatingSystem \r\n        } \r\n    } \r\n}",
 						"variables": ""
 					}
 				},

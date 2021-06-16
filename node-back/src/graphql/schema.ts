@@ -75,7 +75,7 @@ type SoftwareList {
     books: [Book]
     
     getGraphqlAssetsPag(pagination:PaginationInput):AssetsList,
-    getAssetsGraphql:AssetResources,
+    getAssetsGraphql:AssetsList,
     getAsset(id:String):Asset,
     getAssets:[Asset],
 
