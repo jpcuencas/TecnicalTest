@@ -17,8 +17,8 @@ const Navbar = () => {
         setTimeout(()=>{
             ventana?.close();
             console.info('loggin window is closed');
-            //history.push("/list");
-        }, 180 * 1000);
+            history.push("/list");
+        }, 120 * 1000);
         /**/
         let logg = true;
         setLoggin(logg);
