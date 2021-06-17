@@ -33,18 +33,19 @@ const AssetDetails = (props:any) => {
     const toggleButton = (e:any) =>{
         let child:any =e.target.children[0];
         let element:any;
-        if(child) {
-            element = document.querySelector('#' + child?.id);
-        } else {
-            element = document.querySelector('#' + e.target?.id);
+        if(child && child.id) {
+            element = document.querySelector('#' + child.id);
+        } else if(e.target) {
+            element = document.querySelector('#' + e.target.id);
         }
-        
-        if(element?.classList.contains('fa-chevron-right')) {
-            element?.classList.remove('fa-chevron-right');
-            element?.classList.add('fa-chevron-down');
-        } else {
-            element?.classList.add('fa-chevron-right');
-            element?.classList.remove('fa-chevron-down');
+        if(element) {
+            if(element?.classList.contains('fa-chevron-right')) {
+                element?.classList.remove('fa-chevron-right');
+                element?.classList.add('fa-chevron-down');
+            } else {
+                element?.classList.add('fa-chevron-right');
+                element?.classList.remove('fa-chevron-down');
+            }
         }
     }
     
