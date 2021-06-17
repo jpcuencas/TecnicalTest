@@ -46,7 +46,7 @@ For the steps Install Dependences and Run App you can run the script:
 First you must loggin click on the button loggin from de main screen
 when  a loggin pop-up appear and you can logged  when you are finish close the popup
 
-then you access to assets table with thwe link in the navbar 
+then you access to assets table with thwe link in the navbar 'assets'
 then you have all data and check the flow with the details
 
 ## Docker
