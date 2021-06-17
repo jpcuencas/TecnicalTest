@@ -1,6 +1,4 @@
 import React from 'react';
-import '../../scss/styles.scss';
-import '../../scss/layout/footer.scss';
 import { createUseStyles } from 'react-jss';
 
 const styles = createUseStyles({

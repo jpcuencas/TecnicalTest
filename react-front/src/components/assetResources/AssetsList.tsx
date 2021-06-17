@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../../scss/styles.scss';
-import '../../scss/assetResources/assetsList.scss';
 import console from '../../config/logger';
 import * as AssetsService from '../../services/AssetsService';
 import Asset from '../../models/Asset/Asset';
@@ -8,8 +6,16 @@ import Pagination from '../../models/Pagination';
 import AssetItem from './AssetsItem';
 import config from '../../config/config';
 import { callApolloService } from '../../services/ApolloService';
+import { createUseStyles } from 'react-jss';
+
+const styles = createUseStyles({
+    tableText: {
+        fontFamily: 'Arial'
+    },
+});
 
 const AssetsList = () => {
+    const classes = styles();
     const initialAssets: Asset[] = [];
     const [assets, setAssets] = useState<Asset[]>(initialAssets);
     
@@ -113,11 +119,11 @@ const AssetsList = () => {
        <table className="table">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Model</th>
-            <th scope="col">Manufacturer</th>
+            <th scope="col" className={classes.tableText}>ID</th>
+            <th scope="col"className={classes.tableText}>Name</th>
+            <th scope="col"className={classes.tableText}>Type</th>
+            <th scope="col"className={classes.tableText}>Model</th>
+            <th scope="col"className={classes.tableText}>Manufacturer</th>
             <th scope="col"></th>
           </tr>
         </thead>

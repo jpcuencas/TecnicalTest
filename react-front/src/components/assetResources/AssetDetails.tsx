@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../../scss/styles.scss';
-import '../../scss/assetResources/assetDetails.scss';
 import console from '../../config/logger';
 import { Link } from 'react-router-dom';
 import * as AssetsService from '../../services/AssetsService';
