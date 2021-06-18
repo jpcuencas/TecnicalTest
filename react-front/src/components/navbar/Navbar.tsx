@@ -61,7 +61,7 @@ const Navbar = () => {
             <div className="navbar-nav">
                 {(loggin) ?
 
-                <Link className="nav-link text-dark" to="/list"><i className="fas fa-desktop"></i> Assets</Link>
+                <Link className="nav-link text-dark" to="/list"><h6><i className="fas fa-desktop"></i> Assets</h6></Link>
                 :
                     <p></p>
                 }            
